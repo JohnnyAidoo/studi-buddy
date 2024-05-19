@@ -4,25 +4,30 @@ import Image from "next/image";
 
 function Hero() {
   return (
-    <section id="hero" className="px-20">
-      <div>
+    <section id="hero" className="px-20 flex justify-between h-screen">
+      <div className="w-1/3 self-center h-1/2 gap-5 flex flex-col items-start">
         <Typography
           variant="h1"
+          className="font-bold text-6xl"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          Hero H1 text
+          Build Tools That Profit
         </Typography>
         <Typography
-          variant="h6"
+          variant="paragraph"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          Hero H1 text
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae
+          mollitia excepturi at numquam ullam quaerat facilis possimus vitae
+          totam impedit, delectus aliquid molestiae pariatur ipsum quia omnis,
+          eius obcaecati earum.
         </Typography>
         <Button
+          size="lg"
           className="bg-tertiary"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
@@ -31,14 +36,15 @@ function Hero() {
           Get Started
         </Button>
       </div>
-      <div>
+      <div className=" w-3/5 relative rounded-lg">
         <Image
+          className="rounded-lg"
           src={
             "https://img.freepik.com/free-photo/happy-guy-bright-outfit-laughing-posing-blue-background_197531-26853.jpg?t=st=1716095788~exp=1716099388~hmac=1baa695d76177eb9e862da034718fc0308d90a0861e0936f3f8271dba779b7bc&w=1800"
           }
           alt={"hero image"}
-          width={100}
-          height={100}
+          layout="fill"
+          objectFit="contain"
         />
       </div>
     </section>

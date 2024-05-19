@@ -1,14 +1,19 @@
-import Header from "./components/header";
+import { Footer } from "./components/footer";
+import { Header } from "./components/header";
+import { FAQ } from "./ui/faq";
+import Features from "./ui/featuresPage";
 import Hero from "./ui/heroPage";
+import Pricing from "./ui/pricing";
 
 function Home() {
   return (
     <>
       <Header />
       <Hero />
-      {/* hero section */}
-
-      {/* footer */}
+      <Features />
+      <Pricing />
+      <FAQ />
+      <Footer />
     </>
   );
 }
