@@ -4,15 +4,12 @@ import { Typography } from "@material-tailwind/react";
 const LINKS = [
   {
     title: "Product",
-    items: ["Overview", "Features", "Solutions", "Tutorials"],
+    items: ["Home", "features", "pricing", "faqs"],
   },
-  {
-    title: "Company",
-    items: ["About us", "Careers", "Press", "News"],
-  },
+
   {
     title: "Resource",
-    items: ["Blog", "Newsletter", "Events", "Help center"],
+    items: ["Help center"],
   },
 ];
 // const SOCIALS = [
@@ -36,7 +33,7 @@ export function Footer() {
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           >
-            Product
+            DocuChat
           </Typography>
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (
@@ -55,9 +52,9 @@ export function Footer() {
                   <li key={link}>
                     <Typography
                       as="a"
-                      href="#"
+                      href={link == "Home" ? `/` : `/${link}`}
                       color="gray"
-                      className="py-1.5 font-normal transition-colors hover:text-blue-gray-900 text-secondary"
+                      className="py-1.5 capitalize font-normal transition-colors hover:text-blue-gray-900 text-secondary"
                       placeholder={undefined}
                       onPointerEnterCapture={undefined}
                       onPointerLeaveCapture={undefined}

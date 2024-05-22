@@ -5,7 +5,7 @@ import Image from "next/image";
 function Hero() {
   return (
     <section id="hero" className="px-20 flex justify-between h-screen">
-      <div className="w-1/2 self-center h-1/2 gap-5 flex flex-col items-start">
+      <div className="w-1/2 pr-9 self-center h-1/2 gap-5 flex flex-col items-start">
         <Typography
           variant="h1"
           className="font-bold text-6xl text-secondary/90"
@@ -13,7 +13,7 @@ function Hero() {
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          Build Tools That Profit
+          Converse with Your Documents
         </Typography>
         <Typography
           className="text-secondary/90"
@@ -22,14 +22,16 @@ function Hero() {
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae
-          mollitia excepturi at numquam ullam quaerat facilis possimus vitae
-          totam impedit, delectus aliquid molestiae pariatur ipsum quia omnis,
-          eius obcaecati earum.
+          Welcome to DocuChat – the revolutionary app that transforms the way
+          you interact with your documents. Whether it's a PDF file or a photo,
+          DocuChat allows you to engage with your content in a whole new way.
+          Imagine having a conversation with your documents, extracting the
+          information you need effortlessly, and navigating through complex
+          files with ease.
         </Typography>
         <Button
           size="lg"
-          className="bg-tertiary"
+          className="from-tertiary/70 to-tertiary bg-gradient-to-r "
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}

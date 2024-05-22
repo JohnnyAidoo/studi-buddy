@@ -60,13 +60,13 @@ export function FAQ() {
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          What is Product?
+          How does DocuChat summarize documents?
         </AccordionHeader>
         <AccordionBody>
-          We&apos;re not always in the position that we want to be at.
-          We&apos;re constantly growing. We&apos;re constantly making mistakes.
-          We&apos;re constantly trying to express ourselves and actualize our
-          dreams.
+          DocuChat uses advanced AI algorithms to analyze the content of your
+          documents and generate concise summaries. Simply upload your PDF or
+          photo, and our app will provide you with a brief yet comprehensive
+          overview of the key points, saving you time and effort.
         </AccordionBody>
       </Accordion>
       <Accordion
@@ -82,13 +82,14 @@ export function FAQ() {
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          How to use Product?
+          Can I ask specific questions about my documents in DocuChat?
         </AccordionHeader>
         <AccordionBody>
-          We&apos;re not always in the position that we want to be at.
-          We&apos;re constantly growing. We&apos;re constantly making mistakes.
-          We&apos;re constantly trying to express ourselves and actualize our
-          dreams.
+          es! With DocuChat, you can interact with your documents just like you
+          would in a conversation. Type your questions into the chat interface,
+          and our intelligent system will provide detailed responses based on
+          the content of your document, making it easier to find the information
+          you need.
         </AccordionBody>
       </Accordion>
       <Accordion
@@ -104,13 +105,13 @@ export function FAQ() {
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          What can I do with Product?
+          What types of documents can I use with DocuChat?
         </AccordionHeader>
         <AccordionBody>
-          We&apos;re not always in the position that we want to be at.
-          We&apos;re constantly growing. We&apos;re constantly making mistakes.
-          We&apos;re constantly trying to express ourselves and actualize our
-          dreams.
+          DocuChat supports a wide range of document types, including PDFs and
+          images containing text. Whether you need to analyze a report, a
+          research paper, a contract, or any other document, DocuChat is
+          equipped to help you interact with and understand your content.
         </AccordionBody>
       </Accordion>
     </section>

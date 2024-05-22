@@ -1,7 +1,11 @@
 import { Card, Typography } from "@material-tailwind/react";
 import Image from "next/image";
 
-function FeatureComp(props: { reversed?: boolean }) {
+function FeatureComp(props: {
+  reversed?: boolean;
+  title?: string;
+  description?: string;
+}) {
   return (
     <div
       className={`flex gap-20 items-center py-10  ${
@@ -24,27 +28,24 @@ function FeatureComp(props: { reversed?: boolean }) {
           alt={""}
         />
       </Card>
-      <div className="w-1/3">
+      <div className="w-1/3 text-center">
         <Typography
           variant="h1"
-          className="text-center text-4xl font-extrabold text-secondary/90"
+          className=" text-4xl font-extrabold text-secondary/90 py-5"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          Fast
+          {props.title || "TITLE"}
         </Typography>
         <Typography
-          className="text-secondary/90"
+          className="text-secondary/90 w-full "
           variant="paragraph"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-          sint rerum magni, laborum quisquam adipisci, voluptas voluptates
-          architecto quis illo quibusdam ab autem, similique debitis harum iusto
-          qui modi odio.
+          {props.description || "DESCRIPTION"}
         </Typography>
       </div>
     </div>

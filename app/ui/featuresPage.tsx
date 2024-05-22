@@ -16,9 +16,15 @@ function Features() {
         Features
       </Typography>
 
-      <FeatureComp />
-      <FeatureComp reversed />
-      <FeatureComp />
+      <FeatureComp
+        title="Summarize Documents"
+        description="Quickly get concise summaries of lengthy PDFs and photos, saving you time and effort."
+      />
+      <FeatureComp
+        reversed
+        title="Interact with Documents"
+        description="Ask questions, get detailed explanations, and interact with your content through an intuitive chat interface."
+      />
     </section>
   );
 }
