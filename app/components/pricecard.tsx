@@ -148,18 +148,20 @@ export function PricingCard() {
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
       >
-        <Button
-          size="lg"
-          color="white"
-          className="hover:scale-[1.02] focus:scale-[1.02] active:scale-100"
-          ripple={false}
-          fullWidth={true}
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
-          Buy Now
-        </Button>
+        <a href="https://buy.stripe.com/28oeVH6jLdC054Q002">
+          <Button
+            size="lg"
+            color="white"
+            className="hover:scale-[1.02] focus:scale-[1.02] active:scale-100"
+            ripple={false}
+            fullWidth={true}
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            Buy Now
+          </Button>
+        </a>
       </CardFooter>
     </Card>
   );

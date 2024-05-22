@@ -31,7 +31,7 @@ export function Footer() {
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
           <Typography
             variant="h5"
-            className="mb-6"
+            className="mb-6 text-secondary/90"
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
@@ -44,7 +44,7 @@ export function Footer() {
                 <Typography
                   variant="small"
                   color="blue-gray"
-                  className="mb-3 font-medium opacity-40"
+                  className="mb-3 font-medium opacity-40 text-secondary"
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
@@ -57,7 +57,7 @@ export function Footer() {
                       as="a"
                       href="#"
                       color="gray"
-                      className="py-1.5 font-normal transition-colors hover:text-blue-gray-900"
+                      className="py-1.5 font-normal transition-colors hover:text-blue-gray-900 text-secondary"
                       placeholder={undefined}
                       onPointerEnterCapture={undefined}
                       onPointerLeaveCapture={undefined}
@@ -70,10 +70,10 @@ export function Footer() {
             ))}
           </div>
         </div>
-        <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
+        <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between text-secondary">
           <Typography
             variant="small"
-            className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
+            className="mb-4 text-center font-normal md:mb-0"
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
@@ -84,7 +84,7 @@ export function Footer() {
             </a>
             . All Rights Reserved.
           </Typography>
-          <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
+          <div className="flex gap-4 text-blue-gray-900 sm:justify-center text-secondary">
             <Typography
               id="facebook"
               as="a"
@@ -151,7 +151,7 @@ export function Footer() {
               id="github"
               as="a"
               href="https://github.com/JohnnyAidoo"
-              className="opacity-80 transition-opacity hover:opacity-100"
+              className="opacity-80 transition-opacity hover:opacity-100 "
               placeholder={undefined}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}

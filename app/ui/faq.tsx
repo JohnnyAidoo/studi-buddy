@@ -35,12 +35,12 @@ export function FAQ() {
 
   return (
     <section
-      id="faq"
-      className="w-full px-10  min-h-screen flex flex-col justify-center "
+      id="faqs"
+      className="w-full px-20  min-h-screen flex flex-col justify-center text-secondary"
     >
       <Typography
         variant="h1"
-        className="text-center text-6xl font-extrabold"
+        className="text-center text-6xl font-extrabold text-secondary/90"
         placeholder={undefined}
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}

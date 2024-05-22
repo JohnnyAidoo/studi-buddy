@@ -5,10 +5,10 @@ import Image from "next/image";
 function Hero() {
   return (
     <section id="hero" className="px-20 flex justify-between h-screen">
-      <div className="w-1/3 self-center h-1/2 gap-5 flex flex-col items-start">
+      <div className="w-1/2 self-center h-1/2 gap-5 flex flex-col items-start">
         <Typography
           variant="h1"
-          className="font-bold text-6xl"
+          className="font-bold text-6xl text-secondary/90"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
@@ -16,6 +16,7 @@ function Hero() {
           Build Tools That Profit
         </Typography>
         <Typography
+          className="text-secondary/90"
           variant="paragraph"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
@@ -36,7 +37,7 @@ function Hero() {
           Get Started
         </Button>
       </div>
-      <div className=" w-3/5 relative rounded-lg">
+      <div className=" w-7/12 relative rounded-lg">
         <Image
           className="rounded-lg"
           src={

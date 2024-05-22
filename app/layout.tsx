@@ -14,9 +14,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="light bg-primary">
+      <head>
+        <link
+          href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+          rel="stylesheet"
+        ></link>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+      </head>
+      <body className="light bg-primary overflow-x-hidden">
         <main>{children}</main>
       </body>
+      <script>AOS.init()</script>
     </html>
   );
 }
