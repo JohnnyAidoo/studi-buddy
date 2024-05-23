@@ -17,7 +17,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               <SignInButton />
             </SignedOut>
             <SignedIn>
-              <UserButton />
+              <nav className=" flex justify-between px-10 py-5 shadow-sm sticky">
+                <h1 className="text-2xl font-bold">DocuChat</h1>
+                <UserButton />
+              </nav>
               {children}
             </SignedIn>
           </main>
