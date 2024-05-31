@@ -1,31 +1,19 @@
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
-import "../globals.css";
+import { UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body>
-          <main>
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <nav className=" flex justify-between px-10 py-5 shadow-sm sticky">
-                <h1 className="text-2xl font-bold">DocuChat</h1>
-                <UserButton />
-              </nav>
-              {children}
-            </SignedIn>
-          </main>
-        </body>
-      </html>
-    </ClerkProvider>
+    <main>
+      <header className="flex justify-between px-10 py-3 shadow-sm sticky top-0">
+        <Link href="/app">
+          <h1>Docu-Chat</h1>
+        </Link>
+
+        <UserButton />
+      </header>
+      {children}
+    </main>
   );
-}
+};
+
+export default Layout;

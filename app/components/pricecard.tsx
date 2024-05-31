@@ -27,7 +27,11 @@ function CheckIcon() {
   );
 }
 
-export function PricingCard() {
+export function PricingCard(props: {
+  planLink: string;
+  planPrice: number | string;
+  planDuration: string;
+}) {
   return (
     <Card
       color="gray"
@@ -64,8 +68,9 @@ export function PricingCard() {
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          <span className="mt-2 text-4xl">$</span>29{" "}
-          <span className="self-end text-4xl">/mo</span>
+          <span className="mt-2 text-4xl">$</span>
+          {props.planPrice}
+          <span className="self-end text-4xl">{props.planDuration}</span>
         </Typography>
       </CardHeader>
       <CardBody
@@ -148,7 +153,10 @@ export function PricingCard() {
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
       >
-        <a href="https://buy.stripe.com/28oeVH6jLdC054Q002">
+        <a
+          href={props.planLink + "?prefilled_email=" + " session?.user?.email"}
+          target="_"
+        >
           <Button
             size="lg"
             color="white"

@@ -1,11 +1,28 @@
+import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
 import {
   ClerkProvider,
-  SignInButton,
   SignedIn,
   SignedOut,
+  SignInButton,
   UserButton,
 } from "@clerk/nextjs";
+
 import "./globals.css";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
+
+export const metadata: Metadata = {
+  title: "Docu-Chat",
+  description: "Chat with your docs.",
+  icons: {
+    icon: "/assets/images/logo.svg",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -13,18 +30,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          href="https://unpkg.com/aos@2.3.1/dist/aos.css"
-          rel="stylesheet"
-        ></link>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-      </head>
-      <body className="light bg-primary overflow-x-hidden">
-        <main>{children}</main>
-      </body>
-      <script>AOS.init()</script>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={poppins.variable}>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }
