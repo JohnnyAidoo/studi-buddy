@@ -26,7 +26,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/api/openai/route.ts"
+    "app/api/ai/route.ts"
   ],
   "exclude": ["node_modules"]
 }
