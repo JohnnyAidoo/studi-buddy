@@ -1,8 +1,8 @@
 "use client";
-import { IconButton, Textarea, Typography } from "@material-tailwind/react";
+import { IconButton, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { EventHandler, useState } from "react";
+import { useState } from "react";
 const FormData = require("form-data");
 
 function AppPage() {
@@ -36,8 +36,7 @@ function AppPage() {
       })
       .then((response) => {
         if (response.status === 201) {
-          // console.log(response.data.docId);
-          router.replace(`/app/${response.data.docId}`);
+          router.replace(`/app/chat/${response.data.docId}`);
         } else {
           console.log("Error:", response.status);
         }
@@ -90,7 +89,7 @@ function AppPage() {
       </div>
 
       <div className="w-full absolute bottom-0 flex justify-center items-center">
-        <div className="flex w-1/2 mb-5 flex-row items-center gap-2 rounded-[99px] border border-gray-900/10 bg-gray-900/5 p-2">
+        <div className="flex  mb-5 flex-row items-center gap-2 rounded-[99px] border border-gray-900/10 bg-gray-900/5 p-2">
           <form className="flex" onSubmit={handleSubmit}>
             <input
               type="file"
@@ -100,24 +99,7 @@ function AppPage() {
               accept="application/pdf"
             />
           </form>
-          <Textarea
-            onChange={(e) => {
-              SetInputValue(e.target.value);
-            }}
-            value={inputValue}
-            rows={1}
-            resize={true}
-            placeholder="Your Message"
-            className="min-h-full !border-0 focus:border-transparent"
-            containerProps={{
-              className: "grid h-full",
-            }}
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          />
+
           <div>
             <IconButton
               onClick={handleSubmit}
