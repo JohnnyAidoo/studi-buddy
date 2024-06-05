@@ -34,6 +34,7 @@ function Pricing() {
       <div className=" h-fit w-full flex flex-wrap py-10 gap-10 justify-center">
         {plans.map((plan) => (
           <PricingCard
+            key={plan.link}
             planLink={plan.link}
             planPrice={plan.price}
             planDuration={plan.duration}

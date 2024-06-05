@@ -23,9 +23,9 @@ function Hero() {
           onPointerLeaveCapture={undefined}
         >
           Welcome to DocuChat – the revolutionary app that transforms the way
-          you interact with your documents. Whether it's a PDF file or a photo,
-          DocuChat allows you to engage with your content in a whole new way.
-          Imagine having a conversation with your documents, extracting the
+          you interact with your documents. Whether it&lsquo;s a PDF file or a
+          photo, DocuChat allows you to engage with your content in a whole new
+          way. Imagine having a conversation with your documents, extracting the
           information you need effortlessly, and navigating through complex
           files with ease.
         </Typography>
