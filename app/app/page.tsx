@@ -3,12 +3,14 @@ import { IconButton, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { UploadButton } from "../utils/uploadthing";
 const FormData = require("form-data");
 
 function AppPage() {
   //use states
   const [chatRes, setChatRes] = useState("");
   const [userFile, setUserFile] = useState();
+  const [fileUrl, setFileUrl] = useState("");
   const [loadingResponse, setLoadingResponse] = useState(false);
   const [inputValue, SetInputValue] = useState("");
 
@@ -22,10 +24,6 @@ function AppPage() {
   form.append("file", userFile);
 
   //functions
-
-  const get_file_from_user = (e: any) => {
-    setUserFile(e.target.files[0]);
-  };
 
   const upload_pdf_to_api = async () => {
     await axios
@@ -91,12 +89,17 @@ function AppPage() {
       <div className="w-full absolute bottom-0 flex justify-center items-center">
         <div className="flex  mb-5 flex-row items-center gap-2 rounded-[99px] border border-gray-900/10 bg-gray-900/5 p-2">
           <form className="flex" onSubmit={handleSubmit}>
-            <input
-              type="file"
-              name="file"
-              id="file"
-              onChange={get_file_from_user}
-              accept="application/pdf"
+            <UploadButton
+              onClientUploadComplete={(res) => {
+                // Do something with the response
+                console.log("Files: ", res);
+                alert("Upload Completed");
+              }}
+              onUploadError={(error: Error) => {
+                // Do something with the error.
+                alert(`ERROR! ${error.message}`);
+              }}
+              endpoint={"fileUploader"}
             />
           </form>
 
