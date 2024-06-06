@@ -10,7 +10,7 @@ export default function DocChatPage({ params }: { params: { docid: string } }) {
     sender: "",
     message: "",
   });
-  const [laodingResponse, setLaodingResponse] = useState(false);
+  const [loadingResponse, setLoadingResponse] = useState(false);
   const [inputValue, SetInputValue] = useState("");
 
   //constants
@@ -26,7 +26,7 @@ export default function DocChatPage({ params }: { params: { docid: string } }) {
     },
   ];
 
-  //funtions
+  //functions
 
   const handleSendUserChat = () => {
     axios
@@ -41,7 +41,7 @@ export default function DocChatPage({ params }: { params: { docid: string } }) {
             sender: response.data.answer.sender,
             message: response.data.answer.message,
           });
-          setLaodingResponse(false);
+          setLoadingResponse(false);
           console.log(response.data.answer.sender);
         } else {
           console.log("Error:", response.status);
@@ -54,7 +54,7 @@ export default function DocChatPage({ params }: { params: { docid: string } }) {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    setLaodingResponse(true);
+    setLoadingResponse(true);
     handleSendUserChat();
     SetInputValue("");
   };
@@ -64,7 +64,7 @@ export default function DocChatPage({ params }: { params: { docid: string } }) {
       {/* chat response */}
       <div className="h-full w-1/2">
         <p>
-          {laodingResponse ? (
+          {loadingResponse ? (
             <>
               <Typography
                 as="div"

@@ -9,7 +9,7 @@ function AppPage() {
   //use states
   const [chatRes, setChatRes] = useState("");
   const [userFile, setUserFile] = useState();
-  const [laodingResponse, setLaodingResponse] = useState(false);
+  const [loadingResponse, setLoadingResponse] = useState(false);
   const [inputValue, SetInputValue] = useState("");
 
   //constants
@@ -21,13 +21,13 @@ function AppPage() {
   let form = new FormData();
   form.append("file", userFile);
 
-  //funtions
+  //functions
 
   const get_file_from_user = (e: any) => {
     setUserFile(e.target.files[0]);
   };
 
-  const uplaod_pdf_to_api = async () => {
+  const upload_pdf_to_api = async () => {
     await axios
       .post("https://api.askyourpdf.com/v1/api/upload", form, {
         headers: {
@@ -48,10 +48,10 @@ function AppPage() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    setLaodingResponse(true);
+    setLoadingResponse(true);
 
     SetInputValue("");
-    uplaod_pdf_to_api();
+    upload_pdf_to_api();
   };
 
   return (
@@ -59,7 +59,7 @@ function AppPage() {
       {/* chat response */}
       <div className="h-full w-1/2">
         <p>
-          {laodingResponse ? (
+          {loadingResponse ? (
             <>
               <Typography
                 as="div"
