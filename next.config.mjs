@@ -2,7 +2,6 @@
 const nextConfig = {
   images: {
     domains: ["img.freepik.com", "docs.material-tailwind.com"],
-    loader: "custom",
   },
 };
 

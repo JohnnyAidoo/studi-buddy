@@ -57,12 +57,26 @@ export function Header() {
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
             <div className="flex items-center gap-x-1">
-              <div className="font-normal px-5 py-1 rounded-md hover:bg-secondary hover:text-primary">
-                <SignInButton />
-              </div>
-              <div className="px-5 py-1 bg-black  text-white rounded-md hover:shadow-xl hover:text-primary font-normal">
-                <SignUpButton />
-              </div>
+              <a href="/sign-in">
+                <Button
+                  variant="text"
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  Sign In
+                </Button>
+              </a>
+              <a href="/sign-up">
+                <Button
+                  variant="gradient"
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  Sign Up
+                </Button>
+              </a>
             </div>
             <IconButton
               placeholder={undefined}
