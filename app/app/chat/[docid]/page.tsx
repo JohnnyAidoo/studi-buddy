@@ -61,13 +61,13 @@ export default function DocChatPage({ params }: { params: { docid: string } }) {
   };
 
   return (
-    <section className="w-full min-h-screen px-10 py-5 flex justify-between">
+    <section className="w-full min-h-screen px-10 py-5  justify-between md:flex">
       {/* pdf file preview */}
-      <div className=" w-1/2 p-5">
+      <div className="w-full md:w-1/2 p-5">
         <PDFViewer fileUrl="https://utfs.io/f/c6f6683d-71ba-4e29-8b58-3e88946a49c0-midjlv.pdf" />
       </div>
       {/* chat response */}
-      <div className="h-full w-1/2 flex flex-col ">
+      <div className="h-full w-full md:w-1/2 flex flex-col ">
         <p>
           {loadingResponse ? (
             <>
@@ -95,15 +95,15 @@ export default function DocChatPage({ params }: { params: { docid: string } }) {
           ) : (
             <>
               <h1>{chatResponse.sender}</h1>
-              <div className="p-10 shadow-md rounded-md border-gray-200 border-solid border">
+              <div className="p-10 shadow-md rounded-md border-gray-200 border-solid border mb-20">
                 <p>{chatResponse.message}</p>
               </div>
             </>
           )}
         </p>
         {/* input filed/form */}
-        <div className="w-1/2 fixed bottom-0 flex justify-center items-center">
-          <div className="flex w-1/2 mb-5 flex-row items-center gap-2 rounded-[99px] border border-gray-900/10 bg-gray-900/5 p-2">
+        <div className="w-screen md:w-full  fixed bottom-0 flex justify-start items-center bg-primary pr-5">
+          <div className="flex w-4/5 md:w-1/2 mb-5 flex-row items-center gap-2 rounded-[99px] border border-gray-900/10 bg-gray-900/5 p-2">
             <form className="flex w-full" onSubmit={handleSubmit}>
               <Textarea
                 onChange={(e) => {

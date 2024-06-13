@@ -13,7 +13,7 @@ function FeatureComp(props: {
       }`}
     >
       <Card
-        className="w-1/2 min-h-96"
+        className="w-1/2 min-h-96 bg-transparent"
         shadow={false}
         placeholder={undefined}
         onPointerEnterCapture={undefined}
