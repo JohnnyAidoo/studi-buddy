@@ -26,7 +26,7 @@ export function Footer() {
       <div className="flex flex-col justify-center items-center gap-10 py-20">
         <Typography
           variant="h1"
-          className="text-center text-6xl font-extrabold text-secondary/90"
+          className="text-center text-3xl md:text-6xl font-extrabold text-secondary/90"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}

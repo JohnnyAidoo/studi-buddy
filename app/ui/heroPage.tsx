@@ -31,7 +31,7 @@ function Hero() {
         </div>
       </div>
       <Typography
-        className="text-secondary/90 px-72 "
+        className="text-secondary/90 pb-5 px-5 md:px-52 "
         variant="paragraph"
         placeholder={undefined}
         onPointerEnterCapture={undefined}

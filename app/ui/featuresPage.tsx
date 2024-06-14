@@ -1,11 +1,10 @@
 "use client";
-import { Card, Typography } from "@material-tailwind/react";
-import Image from "next/image";
+import { Typography } from "@material-tailwind/react";
 import FeatureComp from "../components/featureComp";
 
 function Features() {
   return (
-    <section id="features" className="min-h-screen px-20 bg-gray-100 py-10">
+    <section id="features" className="min-h-fit px-20 bg-gray-100 py-10">
       <Typography
         variant="h1"
         className="text-center text-6xl font-extrabold py-10 text-secondary/90"
