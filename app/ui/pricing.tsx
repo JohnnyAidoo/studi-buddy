@@ -6,8 +6,14 @@ function Pricing() {
   // Stripe Plans >> fill in your own priceId & link
   const plans = [
     {
-      link: process.env.NODE_ENV === "development" ? "********" : "",
-      priceId: process.env.NODE_ENV === "development" ? "********" : "",
+      link:
+        process.env.NODE_ENV === "development"
+          ? "https://buy.stripe.com/test_28o2argVX8NNeqs144"
+          : "",
+      priceId:
+        process.env.NODE_ENV === "development"
+          ? "price_1PRReuLoyfPvUnOQ7cDj1YaH"
+          : "",
       price: 19,
       duration: "/month",
     },

@@ -16,5 +16,5 @@ export async function POST(request: NextRequest) {
   } catch (err) {
     Response.json(err, { status: 404 });
   }
-  return Response.json("skip");
+  return Response.json("did not send post data to database", { status: 501 });
 }

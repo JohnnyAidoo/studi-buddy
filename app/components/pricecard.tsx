@@ -1,4 +1,6 @@
 "use client";
+import { useUser } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import {
   Card,
   CardHeader,
@@ -32,6 +34,7 @@ export function PricingCard(props: {
   planPrice: number | string;
   planDuration: string;
 }) {
+  const { user } = useUser();
   return (
     <Card
       color="gray"
@@ -154,7 +157,7 @@ export function PricingCard(props: {
         onPointerLeaveCapture={undefined}
       >
         <a
-          href={props.planLink + "?prefilled_email=" + " session?.user?.email"}
+          href={props.planLink + "?prefilled_email=" + user?.emailAddresses}
           target="_"
         >
           <Button

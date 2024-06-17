@@ -32,7 +32,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={poppins.variable}>{children}</body>
+        <body className={poppins.variable} style={{ overflowX: "hidden" }}>
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );

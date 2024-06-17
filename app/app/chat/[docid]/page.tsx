@@ -1,16 +1,21 @@
 "use client";
 import PDFViewer from "@/app/components/pdfViewer";
+import MainURL from "@/app/components/url";
 import { IconButton, Textarea, Typography } from "@material-tailwind/react";
 import axios from "axios";
-import { useState } from "react";
-const FormData = require("form-data");
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default function DocChatPage({ params }: { params: { docid: string } }) {
+export default function DocChatPage({ params }: { params: { docId: string } }) {
+  const urlParams = useSearchParams();
+  const pdfUrl = urlParams.get("pdfUrl");
+
   //use states
   const [chatResponse, setChatResponse] = useState({
     sender: "",
     message: "",
   });
+
   const [loadingResponse, setLoadingResponse] = useState(false);
   const [inputValue, SetInputValue] = useState("");
 
@@ -29,10 +34,10 @@ export default function DocChatPage({ params }: { params: { docid: string } }) {
 
   //functions
 
-  const handleSendUserChat = () => {
+  const handleSendUserChat = (data: any) => {
     axios
       .post(
-        `https://api.askyourpdf.com/v1/chat/${params.docid}?model_name=GPT3`,
+        `https://api.askyourpdf.com/v1/chat/${params.docId}?model_name=GPT3`,
         data,
         { headers: headers }
       )
@@ -56,7 +61,7 @@ export default function DocChatPage({ params }: { params: { docid: string } }) {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setLoadingResponse(true);
-    handleSendUserChat();
+    handleSendUserChat(data);
     SetInputValue("");
   };
 
@@ -64,7 +69,7 @@ export default function DocChatPage({ params }: { params: { docid: string } }) {
     <section className="w-full min-h-screen px-10 py-5  justify-between md:flex">
       {/* pdf file preview */}
       <div className="w-full md:w-1/2 p-5">
-        <PDFViewer fileUrl="https://utfs.io/f/c6f6683d-71ba-4e29-8b58-3e88946a49c0-midjlv.pdf" />
+        <PDFViewer fileUrl={pdfUrl} />
       </div>
       {/* chat response */}
       <div className="h-full w-full md:w-1/2 flex flex-col ">
