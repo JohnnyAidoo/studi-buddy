@@ -1,10 +1,15 @@
 "use client";
 import PDFViewer from "@/app/components/pdfViewer";
 import MainURL from "@/app/components/url";
-import { IconButton, Textarea, Typography } from "@material-tailwind/react";
+import {
+  Button,
+  IconButton,
+  Textarea,
+  Typography,
+} from "@material-tailwind/react";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function DocChatPage({ params }: { params: { docId: string } }) {
   const urlParams = useSearchParams();
@@ -57,6 +62,9 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
         console.error(error);
       });
   };
+  const handleSuggestionClick = (e: any) => {
+    console.log(e.target.value);
+  };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -99,9 +107,47 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
             </>
           ) : (
             <>
-              <h1>{chatResponse.sender}</h1>
+              <Typography
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+                variant="h5"
+                className="py-2"
+              >
+                Ask Anything About The Uploaded PDF <br />
+                Example:
+              </Typography>
+              <Button
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+                variant="outlined"
+                onClick={handleSuggestionClick}
+                value="                What is this PDF file About ?"
+              >
+                What is this PDF file About ?
+              </Button>
+
               <div className="p-10 shadow-md rounded-md border-gray-200 border-solid border mb-20">
-                <p>{chatResponse.message}</p>
+                <Typography
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                  className={
+                    chatResponse.sender == "bot" ? "text-left" : "text-right"
+                  }
+                >
+                  {chatResponse.sender}
+                </Typography>
+                <Typography
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                  variant="paragraph"
+                  className="font-semibold"
+                >
+                  {chatResponse.message}
+                </Typography>
               </div>
             </>
           )}

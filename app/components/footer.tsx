@@ -58,6 +58,7 @@ export function Footer() {
           {links.map((link) => (
             <a href={link.link}>
               <Typography
+                key={link.link}
                 variant="paragraph"
                 className="text-center font-extrabold text-white"
                 placeholder={undefined}
