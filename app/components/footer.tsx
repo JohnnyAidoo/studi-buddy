@@ -56,9 +56,8 @@ export function Footer() {
         </Typography>
         <div className="flex gap-5">
           {links.map((link) => (
-            <a href={link.link}>
+            <a href={link.link} key={link.link}>
               <Typography
-                key={link.link}
                 variant="paragraph"
                 className="text-center font-extrabold text-white"
                 placeholder={undefined}
