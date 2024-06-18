@@ -28,10 +28,7 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
 
   const headers = {
     // "x-api-key": "ask_c816c4e5ddd8c05c53830d3f8bad3d7d","ask_4b765fb8f67d6395b93e13c9339bbfaa"
-    "x-api-key":
-      process.env.NODE_ENV == "production"
-        ? "ask_4b765fb8f67d6395b93e13c9339bbfaa"
-        : "ask_c816c4e5ddd8c05c53830d3f8bad3d7d",
+    "x-api-key": "ask_4b765fb8f67d6395b93e13c9339bbfaa",
   };
 
   const data = [
