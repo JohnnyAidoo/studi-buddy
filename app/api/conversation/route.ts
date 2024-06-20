@@ -18,3 +18,15 @@ export async function POST(request: NextRequest) {
   }
   return Response.json("did not send post data to database", { status: 501 });
 }
+
+export async function GET(request: NextRequest) {
+  await connectToDatabase();
+  const { searchParams } = new URL(request.url);
+  const clerkId = searchParams.get("clerkId");
+  try {
+    const conversations = await Conversation.find({ clerkId: clerkId });
+    return Response.json(conversations, { status: 200 });
+  } catch (err) {
+    return Response.json(err, { status: 404 });
+  }
+}

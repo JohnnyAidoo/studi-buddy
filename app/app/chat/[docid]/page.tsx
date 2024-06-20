@@ -1,6 +1,7 @@
 "use client";
 import PDFViewer from "@/app/components/pdfViewer";
 import MainURL from "@/app/components/url";
+import { useAuth } from "@clerk/nextjs";
 import {
   Button,
   IconButton,
@@ -9,17 +10,21 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function DocChatPage({ params }: { params: { docId: string } }) {
   const urlParams = useSearchParams();
   const pdfUrl = urlParams.get("pdfUrl");
+  const auth = useAuth();
+
+  // type
+  type ChatResponseType = {
+    sender: string;
+    message: string;
+  };
 
   //use states
-  const [chatResponse, setChatResponse] = useState({
-    sender: "",
-    message: "",
-  });
+  const [chatResponses, setChatResponses] = useState<ChatResponseType[]>([]);
 
   const [loadingResponse, setLoadingResponse] = useState(false);
   const [inputValue, SetInputValue] = useState("");
@@ -28,51 +33,91 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
 
   const headers = {
     // "x-api-key": "ask_c816c4e5ddd8c05c53830d3f8bad3d7d","ask_4b765fb8f67d6395b93e13c9339bbfaa"
-    "x-api-key": "ask_10456494fb11ef3a3483744f138224c5",
+    "x-api-key": "ask_c816c4e5ddd8c05c53830d3f8bad3d7d",
   };
-
-  const data = [
-    {
-      sender: "User",
-      message: inputValue,
-    },
-  ];
 
   //functions
 
-  const handleSendUserChat = (data: any) => {
+  const handleSendUserChat = async (userInput: string) => {
+    setLoadingResponse(true);
+    const clerkId = await auth.userId;
+
     axios
       .post(
         `https://api.askyourpdf.com/v1/chat/${params.docId}?model_name=GPT3`,
-        data,
+        [
+          {
+            sender: "User",
+            message: userInput,
+          },
+        ],
         { headers: headers }
       )
       .then((response) => {
-        if (response.status === 200) {
-          setChatResponse({
-            sender: response.data.answer.sender,
-            message: response.data.answer.message,
-          });
-          setLoadingResponse(false);
-          console.log(response.data.answer.sender);
+        if (response) {
+          // post the response to the database
+          axios
+            .post(`${MainURL}/api/conversation`, {
+              clerkId: clerkId,
+              documentId: params.docId,
+              sender: response.data.question.sender,
+              message: response.data.question.message,
+            })
+            .then(() => {
+              axios.post(`${MainURL}/api/conversation`, {
+                clerkId: clerkId,
+                documentId: params.docId,
+                sender: response.data.answer.sender,
+                message: response.data.answer.message,
+              });
+            });
         } else {
-          console.log("Error:", response.status);
+          console.log("Error:");
         }
       })
       .catch((error) => {
         console.error(error);
       });
   };
-  const handleSuggestionClick = (e: any) => {
-    console.log(e.target.value);
+
+  const getConversations = async () => {
+    const clerkId = await auth.userId;
+    axios
+      .get(`${MainURL}/api/conversation/?clerkId=${clerkId}`)
+      .then((response) => {
+        if (response.status === 200) {
+          setChatResponses(response.data);
+          setLoadingResponse(false);
+        }
+      })
+      .catch((erorr) => {
+        console.log(erorr);
+      });
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoadingResponse(true);
-    handleSendUserChat(data);
+    handleSendUserChat(inputValue);
+    getConversations();
     SetInputValue("");
   };
+
+  // const handleSuggestionClick = (e: any) => {
+  //   console.log(e.target.value);
+  //   setLoadingResponse(true);
+  //   handleSendUserChat(e.target.value);
+  //   getConversations();
+  //   SetInputValue("");
+  // };
+
+  useEffect(() => {
+    const getData = async () => {
+      await getConversations();
+    };
+
+    getData();
+  }, [loadingResponse]);
 
   return (
     <section className="w-full min-h-screen px-10 py-5  justify-between md:flex">
@@ -116,9 +161,8 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
                 className="py-2"
               >
                 Ask Anything About The Uploaded PDF <br />
-                Example:
               </Typography>
-              <Button
+              {/* <Button
                 placeholder={undefined}
                 onPointerEnterCapture={undefined}
                 onPointerLeaveCapture={undefined}
@@ -127,28 +171,43 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
                 value="                What is this PDF file About ?"
               >
                 What is this PDF file About ?
-              </Button>
+              </Button> */}
 
               <div className="p-10 shadow-md rounded-md border-gray-200 border-solid border mb-20">
-                <Typography
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                  className={
-                    chatResponse.sender == "bot" ? "text-left" : "text-right"
-                  }
-                >
-                  {chatResponse.sender}
-                </Typography>
-                <Typography
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                  variant="paragraph"
-                  className="font-semibold"
-                >
-                  {chatResponse.message}
-                </Typography>
+                {chatResponses.map((chatResponse) => {
+                  return (
+                    <>
+                      <Typography
+                        variant="lead"
+                        placeholder={undefined}
+                        onPointerEnterCapture={undefined}
+                        onPointerLeaveCapture={undefined}
+                        className={`
+                    ${
+                      chatResponse?.sender == "bot" ? "text-left" : "text-right"
+                    } font-bold
+                  `}
+                      >
+                        {chatResponse?.sender}
+                      </Typography>
+                      <Typography
+                        placeholder={undefined}
+                        onPointerEnterCapture={undefined}
+                        onPointerLeaveCapture={undefined}
+                        variant="paragraph"
+                        className={`
+                          ${
+                            chatResponse?.sender == "bot"
+                              ? "text-left"
+                              : "text-right"
+                          } font-bold
+                        `}
+                      >
+                        {chatResponse?.message}
+                      </Typography>
+                    </>
+                  );
+                })}
               </div>
             </>
           )}
