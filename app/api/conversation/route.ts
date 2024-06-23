@@ -21,12 +21,24 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   await connectToDatabase();
+
   const { searchParams } = new URL(request.url);
   const clerkId = searchParams.get("clerkId");
+  const documentId = searchParams.get("documentId");
+
   try {
-    const conversations = await Conversation.find({ clerkId: clerkId });
-    return Response.json(conversations, { status: 200 });
-  } catch (err) {
-    return Response.json(err, { status: 404 });
+    // Use findOne instead of find to get a single document matching clerkId
+    const doc = await Conversation.find({
+      clerkId: clerkId,
+      documentId: documentId,
+    });
+
+    if (doc) {
+      return Response.json(doc, { status: 200 });
+    } else {
+      return Response.json({ error: "No conversation on this document" });
+    }
+  } catch (err: any) {
+    return Response.json({ error: err.message }, { status: 500 });
   }
 }

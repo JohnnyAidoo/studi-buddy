@@ -4,7 +4,7 @@ const DocumentSchema = new Schema({
   clerkId: { type: String, required: true },
   name: { type: String, required: true },
   key: { type: String },
-  documentIdFromStorage: { type: String, required: true },
+  documentId: { type: String, required: true },
   Url: { type: String, required: true },
 });
 

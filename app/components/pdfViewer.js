@@ -8,7 +8,7 @@ const PdfViewer = ({ fileUrl }) => {
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
   return (
-    <div className="w-full overflow-auto" style={{ height: "85vh" }}>
+    <div className="w-full overflow-auto" style={{ height: "85dvh" }}>
       <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
         <Viewer fileUrl={fileUrl} plugins={[defaultLayoutPluginInstance]} />
       </Worker>

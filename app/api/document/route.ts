@@ -4,15 +4,14 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   await connectToDatabase();
-  const { clerkId, name, key, documentIdFromApi, documentIdFromStorage, Url } =
-    await request.json();
+  const { clerkId, name, key, documentId, Url } = await request.json();
 
   try {
     const post_data = await Document.create({
       clerkId,
       name,
       key,
-      documentIdFromStorage,
+      documentId,
       Url,
     });
     return NextResponse.json(post_data, { status: 201 });
@@ -26,16 +25,16 @@ export async function GET(request: NextRequest) {
 
   // Get the query parameter
   const { searchParams } = new URL(request.url);
-  const documentIdFromStorage = searchParams.get("documentIdFromStorage");
+  const documentId = searchParams.get("documentId");
   try {
-    if (!documentIdFromStorage) {
+    if (!documentId) {
       return NextResponse.json(
-        { error: "documentIdFromStorage parameter is required" },
+        { error: "documentId parameter is required" },
         { status: 400 }
       );
     }
     const documents = await Document.findOne({
-      documentIdFromStorage: documentIdFromStorage,
+      documentId: documentId,
     });
     if (!documents) {
       return NextResponse.json(

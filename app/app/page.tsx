@@ -27,6 +27,7 @@ function AppPage() {
     type: string
   ) => {
     setAnalyzingDocument(true);
+
     await axios
       .get("https://api.askyourpdf.com/v1/api/download_pdf", {
         headers: headers,
@@ -35,18 +36,18 @@ function AppPage() {
         },
       })
       .then((response) => {
-        if (response.status === 201) {
-          // console.log(response.data);
+        if (response) {
+          console.log(response.data);
           axios
             .post(`${MainURL}/api/document`, {
               clerkId: auth.userId,
               name: name,
               key: key,
-              documentIdFromStorage: response.data.docId,
+              documentId: response.data.docId,
               Url: url,
             })
             .then((response) => {
-              // console.log(response);
+              console.log(response);
               setAnalyzingDocument(false);
             })
             .catch((error) => {
@@ -54,7 +55,7 @@ function AppPage() {
             });
           router.push(`/app/chat/${response.data.docId}?pdfUrl=${url}`);
         } else {
-          console.log("Error:", response.status);
+          console.log("Error:", response);
         }
       })
       .catch((error) => {
@@ -97,7 +98,6 @@ function AppPage() {
       <UploadButton
         onClientUploadComplete={(res) => {
           //? Do something with the response
-          console.log(res);
 
           // setUserFile({
           //   name: res[0].name,

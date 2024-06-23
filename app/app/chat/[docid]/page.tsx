@@ -33,7 +33,7 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
 
   const headers = {
     // "x-api-key": "ask_c816c4e5ddd8c05c53830d3f8bad3d7d","ask_4b765fb8f67d6395b93e13c9339bbfaa"
-    "x-api-key": process.env.ASK_PDF_API_KEY,
+    "x-api-key": "ask_c816c4e5ddd8c05c53830d3f8bad3d7d",
   };
 
   //functions
@@ -83,7 +83,9 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
   const getConversations = async () => {
     const clerkId = await auth.userId;
     axios
-      .get(`${MainURL}/api/conversation/?clerkId=${clerkId}`)
+      .get(
+        `${MainURL}/api/conversation/?clerkId=${clerkId}&documentId=${params.docId}`
+      )
       .then((response) => {
         if (response.status === 200) {
           setChatResponses(response.data);
@@ -117,17 +119,20 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
     };
 
     getData();
-  }, [loadingResponse]);
+  });
 
   return (
-    <section className="w-full min-h-screen px-10 py-5  justify-between md:flex">
+    <section className="w-full h-screen px-10 py-5 overscroll-none justify-between md:flex">
       {/* pdf file preview */}
       <div className="w-full md:w-1/2 p-5">
         <PDFViewer fileUrl={pdfUrl} />
       </div>
       {/* chat response */}
-      <div className="h-full w-full md:w-1/2 flex flex-col ">
-        <p>
+      <div
+        style={{ maxHeight: "80dvh" }}
+        className="fixed right-0 md:w-1/2 flex flex-col"
+      >
+        <div className="w-full overflow-auto ">
           {loadingResponse ? (
             <>
               <Typography
@@ -174,94 +179,92 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
               </Button> */}
 
               <div className="p-10 shadow-md rounded-md border-gray-200 border-solid border mb-20">
-                {chatResponses.map((chatResponse) => {
-                  return (
-                    <>
-                      <Typography
-                        variant="lead"
-                        placeholder={undefined}
-                        onPointerEnterCapture={undefined}
-                        onPointerLeaveCapture={undefined}
-                        className={`
+                {chatResponses.map((chatResponse) => (
+                  <>
+                    <Typography
+                      variant="lead"
+                      placeholder={undefined}
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                      className={`
                     ${
                       chatResponse?.sender == "bot" ? "text-left" : "text-right"
                     } font-bold
                   `}
-                      >
-                        {chatResponse?.sender}
-                      </Typography>
-                      <Typography
-                        placeholder={undefined}
-                        onPointerEnterCapture={undefined}
-                        onPointerLeaveCapture={undefined}
-                        variant="paragraph"
-                        className={`
+                    >
+                      {chatResponse?.sender}
+                    </Typography>
+                    <Typography
+                      placeholder={undefined}
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                      variant="paragraph"
+                      className={`
                           ${
                             chatResponse?.sender == "bot"
                               ? "text-left"
                               : "text-right"
                           } font-bold
                         `}
-                      >
-                        {chatResponse?.message}
-                      </Typography>
-                    </>
-                  );
-                })}
+                    >
+                      {chatResponse?.message}
+                    </Typography>
+                  </>
+                ))}
               </div>
             </>
           )}
-        </p>
-        {/* input filed/form */}
-        <div className="w-screen md:w-full  fixed bottom-0 flex justify-start items-center bg-primary pr-5">
-          <div className="flex w-4/5 md:w-1/2 mb-5 flex-row items-center gap-2 rounded-[99px] border border-gray-900/10 bg-gray-900/5 p-2">
-            <form className="flex w-full" onSubmit={handleSubmit}>
-              <Textarea
-                onChange={(e) => {
-                  SetInputValue(e.target.value);
-                }}
-                value={inputValue}
-                rows={1}
-                resize={true}
-                placeholder="Your Message"
-                className="min-h-full !border-0 focus:border-transparent"
-                containerProps={{
-                  className: "grid h-full",
-                }}
-                labelProps={{
-                  className: "before:content-none after:content-none",
-                }}
+        </div>
+      </div>
+      {/* input filed/form */}
+      <div className=" z-50 w-screen md:w-full fixed bottom-0 flex justify-end items-center bg-primary pr-12 bg-white">
+        <div className="flex w-4/5 md:w-1/2 mb-5 flex-row items-center gap-2 rounded-[99px] border border-gray-900/10 bg-gray-900/5 p-2">
+          <form className="flex w-full" onSubmit={handleSubmit}>
+            <Textarea
+              onChange={(e) => {
+                SetInputValue(e.target.value);
+              }}
+              value={inputValue}
+              rows={1}
+              resize={true}
+              placeholder="Your Message"
+              className="min-h-full !border-0 focus:border-transparent"
+              containerProps={{
+                className: "grid h-full",
+              }}
+              labelProps={{
+                className: "before:content-none after:content-none",
+              }}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            />
+
+            <div>
+              <IconButton
+                onClick={handleSubmit}
+                variant="text"
+                className="rounded-full"
+                placeholder={undefined}
                 onPointerEnterCapture={undefined}
                 onPointerLeaveCapture={undefined}
-              />
-
-              <div>
-                <IconButton
-                  onClick={handleSubmit}
-                  variant="text"
-                  className="rounded-full"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  className="h-5 w-5"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    className="h-5 w-5"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
-                    />
-                  </svg>
-                </IconButton>
-              </div>
-            </form>
-          </div>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
+                  />
+                </svg>
+              </IconButton>
+            </div>
+          </form>
         </div>
       </div>
     </section>
