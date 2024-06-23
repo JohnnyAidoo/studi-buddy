@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "./globals.css";
 
@@ -30,12 +25,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={poppins.variable} style={{ overflowX: "hidden" }}>
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+    <>
+      <ClerkProvider>
+        <html lang="en">
+          <body className={poppins.variable} style={{ overflowX: "hidden" }}>
+            {children}
+          </body>
+        </html>
+      </ClerkProvider>
+      <SpeedInsights />
+    </>
   );
 }
