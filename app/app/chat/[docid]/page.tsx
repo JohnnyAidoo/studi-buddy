@@ -1,21 +1,19 @@
 "use client";
 import PDFViewer from "@/app/components/pdfViewer";
 import MainURL from "@/app/components/url";
-import { useAuth } from "@clerk/nextjs";
-import {
-  Button,
-  IconButton,
-  Textarea,
-  Typography,
-} from "@material-tailwind/react";
+import { useAuth, useUser } from "@clerk/nextjs";
+import { IconButton, Textarea, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import logoImg from "@/public/icon.png";
+import Image from "next/image";
 
 export default function DocChatPage({ params }: { params: { docId: string } }) {
   const urlParams = useSearchParams();
   const pdfUrl = urlParams.get("pdfUrl");
   const auth = useAuth();
+  const { user } = useUser();
 
   // type
   type ChatResponseType = {
@@ -27,7 +25,7 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
   const [chatResponses, setChatResponses] = useState<ChatResponseType[]>([]);
 
   const [loadingResponse, setLoadingResponse] = useState(false);
-  const [inputValue, SetInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   //constants
 
@@ -43,8 +41,8 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
     const clerkId = await auth.userId;
     const paramsId = await params.docId;
 
-    axios
-      .post(
+    try {
+      const response = await axios.post(
         `https://api.askyourpdf.com/v1/chat/${paramsId}?model_name=GPT3`,
         [
           {
@@ -53,66 +51,56 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
           },
         ],
         { headers: headers }
-      )
-      .then((response) => {
-        if (response) {
-          // post the response to the database
-          axios
-            .post(`${MainURL}/api/conversation`, {
-              clerkId: clerkId,
-              documentId: params.docId,
-              sender: response.data.question.sender,
-              message: response.data.question.message,
-            })
-            .then(() => {
-              axios.post(`${MainURL}/api/conversation`, {
-                clerkId: clerkId,
-                documentId: params.docId,
-                sender: response.data.answer.sender,
-                message: response.data.answer.message,
-              });
-            });
-        } else {
-          console.log("Error:");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      );
+
+      if (response) {
+        await axios.post(`${MainURL}/api/conversation`, {
+          clerkId: clerkId,
+          documentId: params.docId,
+          sender: response.data.question.sender,
+          message: response.data.question.message,
+        });
+        await axios.post(`${MainURL}/api/conversation`, {
+          clerkId: clerkId,
+          documentId: params.docId,
+          sender: response.data.answer.sender,
+          message: response.data.answer.message,
+        });
+
+        // Get updated conversations after posting new data
+        await getConversations();
+      } else {
+        console.log("Error: No response from the chat API.");
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoadingResponse(false);
+    }
   };
 
   const getConversations = async () => {
     const clerkId = await auth.userId;
-    axios
-      .get(
+    try {
+      const response = await axios.get(
         `${MainURL}/api/conversation/?clerkId=${clerkId}&documentId=${params.docId}`
-      )
-      .then((response) => {
-        if (response.status === 200) {
-          setChatResponses(response.data);
-          setLoadingResponse(false);
-        }
-      })
-      .catch((erorr) => {
-        console.log(erorr);
-      });
+      );
+      if (response.status === 200) {
+        setChatResponses(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoadingResponse(false);
+    }
   };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoadingResponse(true);
-    handleSendUserChat(inputValue);
-    getConversations();
-    SetInputValue("");
+    await handleSendUserChat(inputValue);
+    setInputValue("");
   };
-
-  // const handleSuggestionClick = (e: any) => {
-  //   console.log(e.target.value);
-  //   setLoadingResponse(true);
-  //   handleSendUserChat(e.target.value);
-  //   getConversations();
-  //   SetInputValue("");
-  // };
 
   useEffect(() => {
     const getData = async () => {
@@ -120,10 +108,10 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
     };
 
     getData();
-  }, [inputValue]);
+  }, []);
 
   return (
-    <section className="w-full min-h-screen lg:px-10  py-5 overscroll-none justify-between lg:flex">
+    <section className="w-full min-h-screen lg:px-10 py-5 overscroll-none justify-between lg:flex">
       {/* pdf file preview */}
       <div className="w-full lg:w-1/2 p-5">
         <PDFViewer fileUrl={pdfUrl} />
@@ -134,96 +122,102 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
         className="lg:w-1/2 px-5 flex flex-col"
       >
         <div className="w-full overflow-auto ">
-          {loadingResponse ? (
-            <>
-              <Typography
-                as="div"
-                variant="h1"
-                className="mb-4 h-3 w-56 rounded-full bg-gray-300 animate-pulse"
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-              >
-                &nbsp;
-              </Typography>
-              <Typography
-                as="div"
-                variant="h1"
-                className="mb-4 h-3 w-96 rounded-full bg-gray-300 animate-pulse"
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-              >
-                &nbsp;
-              </Typography>
-            </>
-          ) : (
-            <>
-              <Typography
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-                variant="h5"
-                className="py-2"
-              >
-                Ask Anything About The Uploaded PDF <br />
-              </Typography>
-              {/* <Button
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-                variant="outlined"
-                onClick={handleSuggestionClick}
-                value="What is this PDF file About ?"
-              >
-                What is this PDF file About ?
-              </Button> */}
-
-              <div className="p-10 shadow-md rounded-md border-gray-200 border-solid border mb-20">
-                {chatResponses.map((chatResponse) => (
-                  <>
-                    <Typography
-                      variant="lead"
-                      placeholder={undefined}
-                      onPointerEnterCapture={undefined}
-                      onPointerLeaveCapture={undefined}
-                      className={`
-                    ${
-                      chatResponse?.sender == "bot" ? "text-left" : "text-right"
-                    } font-bold
-                  `}
+          <Typography
+            variant="h5"
+            className="py-2"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            Ask Anything About The Uploaded PDF <br />
+          </Typography>
+          <div className="p-10 shadow-md rounded-md border-gray-200 border-solid border mb-20">
+            {loadingResponse ? (
+              <>
+                <Typography
+                  as="div"
+                  variant="h1"
+                  className="mb-4 h-3 w-56 rounded-full bg-gray-300 animate-pulse"
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  &nbsp;
+                </Typography>
+                <Typography
+                  as="div"
+                  variant="h1"
+                  className="mb-4 h-3 w-96 rounded-full bg-gray-300 animate-pulse"
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  &nbsp;
+                </Typography>
+              </>
+            ) : (
+              <>
+                {chatResponses.map((chatResponse, index) => (
+                  <div key={index}>
+                    <div
+                      className={`${
+                        chatResponse.sender == "bot"
+                          ? "justify-start"
+                          : "justify-end"
+                      } flex`}
                     >
-                      {chatResponse?.sender}
-                    </Typography>
-                    <Typography
-                      placeholder={undefined}
-                      onPointerEnterCapture={undefined}
-                      onPointerLeaveCapture={undefined}
-                      variant="paragraph"
-                      className={`
-                          ${
-                            chatResponse?.sender == "bot"
-                              ? "text-left"
-                              : "text-right"
-                          } font-bold
-                        `}
+                      {chatResponse.sender == "bot" ? (
+                        <Image
+                          src={logoImg}
+                          alt={"logo"}
+                          width={30}
+                          height={30}
+                        />
+                      ) : (
+                        <Image
+                          className="rounded-full"
+                          src={user?.imageUrl as string}
+                          alt={"logo"}
+                          width={30}
+                          height={30}
+                        />
+                      )}
+                    </div>
+                    <div
+                      className={`flex ${
+                        chatResponse.sender == "bot"
+                          ? "w-full justify-start"
+                          : " w-full justify-end"
+                      }`}
                     >
-                      {chatResponse?.message}
-                    </Typography>
-                  </>
+                      <Typography
+                        variant="paragraph"
+                        className={`${
+                          chatResponse.sender == "bot"
+                            ? "text-left "
+                            : "text-right p-5 shadow-md rounded-lg "
+                        } font-bold `}
+                        placeholder={undefined}
+                        onPointerEnterCapture={undefined}
+                        onPointerLeaveCapture={undefined}
+                      >
+                        {chatResponse.message}
+                      </Typography>
+                    </div>
+                  </div>
                 ))}
-              </div>
-            </>
-          )}
+              </>
+            )}
+          </div>
         </div>
       </div>
       {/* input filed/form */}
-      <div className=" z-50 w-screen lg:w-full fixed bottom-0 flex justify-center  items-center bg-primary  bg-white">
+      <div className="z-50 w-screen lg:w-full fixed bottom-0 flex justify-center items-center bg-primary bg-white">
         <div className="flex w-4/5 lg:w-1/2 mb-5 flex-row items-center gap-2 rounded-[99px] border border-gray-900/10 bg-gray-900/5 p-2">
           <form className="flex w-full" onSubmit={handleSubmit}>
             <Textarea
               onChange={(e) => {
-                SetInputValue(e.target.value);
+                setInputValue(e.target.value);
               }}
               value={inputValue}
               rows={1}

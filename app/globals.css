@@ -5,10 +5,10 @@
 .light {
   --primary: 255, 255, 255;
   --secondary: 0, 0, 0;
-  --tertiary: 7, 101, 254;
+  --tertiary: 246, 132, 76;
 }
 .dark {
   --primary: 18, 18, 18;
   --secondary: 255, 255, 255;
-  --tertiary: 7, 101, 254;
+  --tertiary: 246, 132, 76;
 }

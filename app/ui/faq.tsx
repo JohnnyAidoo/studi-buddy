@@ -36,11 +36,11 @@ export function FAQ() {
   return (
     <section
       id="faqs"
-      className="w-full px-10 md:px-52  min-h-screen flex flex-col justify-center text-secondary gap-5"
+      className="w-full px-10 md:px-52  min-h-screen flex flex-col justify-center text-secondary gap-5 bg-primary"
     >
       <Typography
         variant="h1"
-        className="text-center text-6xl font-extrabold text-secondary/90 pb-32"
+        className="text-center text-6xl font-extrabold text-secondary pb-32"
         placeholder={undefined}
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}

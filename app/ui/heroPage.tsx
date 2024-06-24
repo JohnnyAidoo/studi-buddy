@@ -6,7 +6,7 @@ function Hero() {
   return (
     <section
       id="hero"
-      className=" flex flex-col justify-between h-screen relative py-10"
+      className=" flex flex-col justify-between h-screen relative py-10 bg-primary"
     >
       <div className="self-center h-full gap-10 flex flex-col items-start relative z-10 py-5">
         <Typography
@@ -45,15 +45,18 @@ function Hero() {
         with ease.
       </Typography>
       <div className="flex w-full justify-center">
-        <Button
-          size="lg"
-          className="from-tertiary/70 to-tertiary bg-gradient-to-r"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
-          Get Started
-        </Button>
+        <a href="/sign-in">
+          <Button
+            size="lg"
+            variant="gradient"
+            className=" from-deep-orange-700 to-yellow-900"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            Get Started
+          </Button>
+        </a>
       </div>
     </section>
   );

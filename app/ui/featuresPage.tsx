@@ -4,7 +4,7 @@ import FeatureComp from "../components/featureComp";
 
 function Features() {
   return (
-    <section id="features" className="min-h-fit px-20 bg-gray-100 py-10">
+    <section id="features" className="min-h-fit px-20 bg-primary py-10">
       <Typography
         variant="h1"
         className="text-center text-6xl font-extrabold py-10 text-secondary/90"

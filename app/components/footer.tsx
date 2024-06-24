@@ -22,7 +22,7 @@ const currentYear = new Date().getFullYear();
 
 export function Footer() {
   return (
-    <footer className=" overflow-hidden relative w-full bg-gray-100 ">
+    <footer className=" overflow-hidden relative w-full bg-primary ">
       <div className="flex flex-col justify-center items-center gap-10 py-20">
         <Typography
           variant="h1"
@@ -35,6 +35,7 @@ export function Footer() {
         </Typography>
         <a href="/sign-up">
           <Button
+            className="from-deep-orange-700 to-yellow-900"
             variant="gradient"
             placeholder={undefined}
             onPointerEnterCapture={undefined}

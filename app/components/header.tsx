@@ -3,13 +3,12 @@ import React from "react";
 import {
   Navbar,
   MobileNav,
-  Typography,
   Button,
   IconButton,
-  Card,
 } from "@material-tailwind/react";
 import Link from "next/link";
-import { ClerkProvider, SignInButton, SignUpButton } from "@clerk/clerk-react";
+import Image from "next/image";
+import logoImg from "@/public/icon.png";
 
 export function Header() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -36,7 +35,7 @@ export function Header() {
   );
 
   return (
-    <div className=" max-h-[768px] w-[calc(100%+20px)] overflow-scroll ">
+    <div className=" max-h-[768px] w-[calc(100%+20px)] overflow-scroll bg-primary ">
       <Navbar
         className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4"
         placeholder={undefined}
@@ -44,16 +43,12 @@ export function Header() {
         onPointerLeaveCapture={undefined}
       >
         <div className="flex items-center justify-between text-blue-gray-900">
-          <Typography
-            as="a"
+          <a
             href="/"
             className="mr-4 cursor-pointer py-1.5 font-extrabold text-3xl"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
           >
-            DocuChat
-          </Typography>
+            <Image src={logoImg} alt={"logo"} width={50} height={50} />
+          </a>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
             <div className="flex items-center gap-x-1">
@@ -69,6 +64,7 @@ export function Header() {
               </a>
               <a href="/sign-up">
                 <Button
+                  className="from-orange-700 to-yellow-900"
                   variant="gradient"
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}

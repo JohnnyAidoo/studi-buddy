@@ -11,7 +11,7 @@ function LandingPage() {
       <Header />
       <Hero />
       <Features />
-      <Pricing />
+      {/* <Pricing /> */}
       <FAQ />
       <Footer />
     </>
