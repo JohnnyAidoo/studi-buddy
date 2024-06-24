@@ -33,7 +33,7 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
 
   const headers = {
     // "x-api-key": "ask_c816c4e5ddd8c05c53830d3f8bad3d7d","ask_4b765fb8f67d6395b93e13c9339bbfaa"
-    "x-api-key": process.env.ASK_PDF_API_KEY,
+    "x-api-key": "ask_834e5488431c5d6d35f4fe4d0ae8f036",
   };
 
   //functions
@@ -119,18 +119,18 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
     };
 
     getData();
-  });
+  }, [inputValue]);
 
   return (
-    <section className="w-full h-screen px-10 py-5 overscroll-none justify-between md:flex">
+    <section className="w-full min-h-screen lg:px-10  py-5 overscroll-none justify-between lg:flex">
       {/* pdf file preview */}
-      <div className="w-full md:w-1/2 p-5">
+      <div className="w-full lg:w-1/2 p-5">
         <PDFViewer fileUrl={pdfUrl} />
       </div>
       {/* chat response */}
       <div
         style={{ maxHeight: "80dvh" }}
-        className="fixed right-0 md:w-1/2 flex flex-col"
+        className="lg:w-1/2 px-5 flex flex-col"
       >
         <div className="w-full overflow-auto ">
           {loadingResponse ? (
@@ -173,7 +173,7 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
                 onPointerLeaveCapture={undefined}
                 variant="outlined"
                 onClick={handleSuggestionClick}
-                value="                What is this PDF file About ?"
+                value="What is this PDF file About ?"
               >
                 What is this PDF file About ?
               </Button> */}
@@ -217,8 +217,8 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
         </div>
       </div>
       {/* input filed/form */}
-      <div className=" z-50 w-screen md:w-full fixed bottom-0 flex justify-end items-center bg-primary pr-12 bg-white">
-        <div className="flex w-4/5 md:w-1/2 mb-5 flex-row items-center gap-2 rounded-[99px] border border-gray-900/10 bg-gray-900/5 p-2">
+      <div className=" z-50 w-screen lg:w-full fixed bottom-0 flex justify-center  items-center bg-primary  bg-white">
+        <div className="flex w-4/5 lg:w-1/2 mb-5 flex-row items-center gap-2 rounded-[99px] border border-gray-900/10 bg-gray-900/5 p-2">
           <form className="flex w-full" onSubmit={handleSubmit}>
             <Textarea
               onChange={(e) => {
