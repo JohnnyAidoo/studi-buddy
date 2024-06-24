@@ -41,10 +41,11 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
   const handleSendUserChat = async (userInput: string) => {
     setLoadingResponse(true);
     const clerkId = await auth.userId;
+    const paramsId = await params.docId;
 
     axios
       .post(
-        `https://api.askyourpdf.com/v1/chat/${params.docId}?model_name=GPT3`,
+        `https://api.askyourpdf.com/v1/chat/${paramsId}?model_name=GPT3`,
         [
           {
             sender: "User",
