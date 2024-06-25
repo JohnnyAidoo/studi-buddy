@@ -9,10 +9,11 @@ import { useEffect, useState } from "react";
 import logoImg from "@/public/icon.png";
 import Image from "next/image";
 
-export default function DocChatPage({ params }: { params: { docId: string } }) {
+export default function DocChatPage({ params }: any) {
   const urlParams = useSearchParams();
   const pdfUrl = urlParams.get("pdfUrl");
   const auth = useAuth();
+  const { docId } = params;
   const { user } = useUser();
 
   // type
@@ -39,11 +40,10 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
   const handleSendUserChat = async (userInput: string) => {
     setLoadingResponse(true);
     const clerkId = await auth.userId;
-    const paramsId = await params.docId;
 
     try {
       const response = await axios.post(
-        `https://api.askyourpdf.com/v1/chat/${paramsId}?model_name=GPT3`,
+        `https://api.askyourpdf.com/v1/chat/${docId}?model_name=GPT3`,
         [
           {
             sender: "User",
@@ -56,13 +56,13 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
       if (response) {
         await axios.post(`${MainURL}/api/conversation`, {
           clerkId: clerkId,
-          documentId: params.docId,
+          documentId: docId,
           sender: response.data.question.sender,
           message: response.data.question.message,
         });
         await axios.post(`${MainURL}/api/conversation`, {
           clerkId: clerkId,
-          documentId: params.docId,
+          documentId: docId,
           sender: response.data.answer.sender,
           message: response.data.answer.message,
         });
@@ -83,7 +83,7 @@ export default function DocChatPage({ params }: { params: { docId: string } }) {
     const clerkId = await auth.userId;
     try {
       const response = await axios.get(
-        `${MainURL}/api/conversation/?clerkId=${clerkId}&documentId=${params.docId}`
+        `${MainURL}/api/conversation/?clerkId=${clerkId}&documentId=${docId}`
       );
       if (response.status === 200) {
         setChatResponses(response.data);
