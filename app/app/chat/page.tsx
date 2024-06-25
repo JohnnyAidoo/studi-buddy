@@ -9,11 +9,11 @@ import { useEffect, useState } from "react";
 import logoImg from "@/public/icon.png";
 import Image from "next/image";
 
-export default function DocChatPage({ params }: any) {
+export default function DocChatPage() {
   const urlParams = useSearchParams();
   const pdfUrl = urlParams.get("pdfUrl");
   const auth = useAuth();
-  const { docId } = params;
+  const docId = urlParams.get("docId");
   const { user } = useUser();
 
   // type

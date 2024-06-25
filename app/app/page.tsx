@@ -53,7 +53,7 @@ function AppPage() {
             .catch((error) => {
               console.log(error);
             });
-          router.push(`/app/chat/${response.data.docId}?pdfUrl=${url}`);
+          router.push(`/app/chat/?docId=${response.data.docId}&pdfUrl=${url}`);
         } else {
           console.log("Error:", response);
         }
