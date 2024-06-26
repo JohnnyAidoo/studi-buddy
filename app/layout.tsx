@@ -23,7 +23,19 @@ export const metadata: Metadata = {
     title: "Docu-Chat",
     description:
       "Chat with your documents effortlessly. Enhance productivity and streamline your workflow with Docu-Chat.",
-    images: "../public/icon.png",
+    images: [
+      {
+        url: "https://utfs.io/f/80eb5da4-8fdb-4b4f-9557-c3f366f7d769-n3ch5g.png", // Must be an absolute URL
+        width: 800,
+        height: 600,
+      },
+      {
+        url: "https://utfs.io/f/80eb5da4-8fdb-4b4f-9557-c3f366f7d769-n3ch5g.png", // Must be an absolute URL
+        width: 1800,
+        height: 1600,
+        alt: "Docu-Chat Banner Image",
+      },
+    ],
   },
 };
 
