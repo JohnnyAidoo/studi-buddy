@@ -14,7 +14,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Docu-Chat",
-  description: "Chat with your docs.",
+  description:
+    "Chat with your documents effortlessly. Enhance productivity and streamline your workflow with Docu-Chat.",
   icons: {
     icon: "/assets/images/logo.svg",
   },
@@ -32,18 +33,12 @@ export default function RootLayout({
           <head>
             <meta property="og:title" content="Docu-Chat" />
             <meta
-              property="og:description"
-              content="Experience seamless communication with Docu-Chat. Chat directly with your documents and streamline your workflow."
-            />
-            <meta property="og:image" content="../public/banner.png" />
-            <meta property="og:url" content={MainURL} />
-            <meta name="twitter:card" content="Docu-Chat" />
-            <meta name="twitter:title" content="Docu-Chat" />
-            <meta
-              name="twitter:description"
+              property="og:type"
               content="Chat with your documents effortlessly. Enhance productivity and streamline your workflow with Docu-Chat."
             />
-            <meta name="twitter:image" content="../public/banner.png" />
+            <meta property="og:image" content="../public/banner.png" />
+            <meta property="og:url" content="https://www.colbyfayock.com" />
+
             <link rel="icon" href="../public/icon.png" />
           </head>
           <body
