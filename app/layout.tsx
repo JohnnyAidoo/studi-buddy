@@ -19,6 +19,12 @@ export const metadata: Metadata = {
   icons: {
     icon: "/assets/images/logo.svg",
   },
+  openGraph: {
+    title: "Docu-Chat",
+    description:
+      "Chat with your documents effortlessly. Enhance productivity and streamline your workflow with Docu-Chat.",
+    images: "../public/icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -30,17 +36,6 @@ export default function RootLayout({
     <>
       <ClerkProvider>
         <html lang="en">
-          <head>
-            <meta property="og:title" content="Docu-Chat" />
-            <meta
-              property="og:type"
-              content="Chat with your documents effortlessly. Enhance productivity and streamline your workflow with Docu-Chat."
-            />
-            <meta property="og:image" content="../public/banner.png" />
-            <meta property="og:url" content="https://www.colbyfayock.com" />
-
-            <link rel="icon" href="../public/icon.png" />
-          </head>
           <body
             className={`${poppins.variable} bg-primary `}
             style={{ overflowX: "hidden" }}
