@@ -2,6 +2,7 @@ import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import logoImg from "@/public/icon.png";
+import Sidebar from "../components/sidebar";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -14,10 +15,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <Image src={logoImg} alt={"logo"} width={50} height={50} />{" "}
           <span>DOCU-CHAT</span>
         </Link>
-
         <UserButton />
       </header>
-      {children}
+      <section className="flex">
+        <Sidebar />
+        {children}
+      </section>
     </main>
   );
 };
