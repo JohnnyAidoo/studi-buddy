@@ -6,7 +6,7 @@ function Hero() {
   return (
     <section
       id="hero"
-      className=" flex flex-col justify-between h-screen relative py-10 bg-primary"
+      className=" flex flex-col justify-between h-screen relative py-10 bg-primary px-10"
     >
       <div className="self-center h-full gap-10 flex flex-col items-start relative z-10 py-5">
         <Typography
@@ -18,9 +18,9 @@ function Hero() {
         >
           Converse with Your Documents
         </Typography>
-        <div className="relative w-full h-full rounded-lg">
+        <div className="relative w-full h-full rounded-lg ">
           <Image
-            className="rounded-lg"
+            className="rounded-lg "
             src={
               "https://img.freepik.com/free-photo/happy-guy-bright-outfit-laughing-posing-blue-background_197531-26853.jpg?t=st=1716095788~exp=1716099388~hmac=1baa695d76177eb9e862da034718fc0308d90a0861e0936f3f8271dba779b7bc&w=1800"
             }
@@ -31,7 +31,7 @@ function Hero() {
         </div>
       </div>
       <Typography
-        className="text-secondary/90 pb-5 px-5 md:px-52 "
+        className="text-secondary/90 pb-5 px-5 md:px-10 "
         variant="paragraph"
         placeholder={undefined}
         onPointerEnterCapture={undefined}

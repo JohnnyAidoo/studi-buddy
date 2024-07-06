@@ -59,10 +59,11 @@ export function FAQ() {
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
+          className="text-secondary"
         >
           How does DocuChat summarize documents?
         </AccordionHeader>
-        <AccordionBody>
+        <AccordionBody className="text-secondary">
           DocuChat uses advanced AI algorithms to analyze the content of your
           documents and generate concise summaries. Simply upload your PDF or
           photo, and our app will provide you with a brief yet comprehensive
@@ -81,11 +82,12 @@ export function FAQ() {
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
+          className="text-secondary"
         >
           Can I ask specific questions about my documents in DocuChat?
         </AccordionHeader>
-        <AccordionBody>
-          es! With DocuChat, you can interact with your documents just like you
+        <AccordionBody className="text-secondary">
+          Yes! With DocuChat, you can interact with your documents just like you
           would in a conversation. Type your questions into the chat interface,
           and our intelligent system will provide detailed responses based on
           the content of your document, making it easier to find the information
@@ -104,10 +106,11 @@ export function FAQ() {
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
+          className="text-secondary"
         >
           What types of documents can I use with DocuChat?
         </AccordionHeader>
-        <AccordionBody>
+        <AccordionBody className="text-secondary">
           DocuChat supports a wide range of document types, including PDFs and
           images containing text. Whether you need to analyze a report, a
           research paper, a contract, or any other document, DocuChat is

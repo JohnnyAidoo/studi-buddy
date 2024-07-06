@@ -61,7 +61,7 @@ export default function Sidebar() {
         onClick={() => setDrawerOpen(false)}
       ></div>
       <Card
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-xl transform transition-transform lg:relative lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 w-64 bg-primary border-secondary transform transition-transform lg:relative lg:translate-x-0 ${
           drawerOpen ? "translate-x-0" : "-translate-x-full"
         }`}
         placeholder={undefined}
@@ -88,6 +88,7 @@ export default function Sidebar() {
                 onPointerLeaveCapture={undefined}
               >
                 <Typography
+                  className="text-secondary"
                   variant="h6"
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
