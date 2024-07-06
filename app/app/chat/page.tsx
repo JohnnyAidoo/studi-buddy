@@ -5,7 +5,7 @@ import { useAuth, useUser } from "@clerk/nextjs";
 import { IconButton, Textarea, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import logoImg from "@/public/icon.png";
 import Image from "next/image";
 
@@ -24,19 +24,18 @@ export default function DocChatPage() {
 
   //use states
   const [chatResponses, setChatResponses] = useState<ChatResponseType[]>([]);
-
   const [loadingResponse, setLoadingResponse] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
-  //constants
+  // Ref for chat container
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
+  //constants
   const headers = {
-    // "x-api-key": "ask_c816c4e5ddd8c05c53830d3f8bad3d7d","ask_4b765fb8f67d6395b93e13c9339bbfaa"
     "x-api-key": "ask_834e5488431c5d6d35f4fe4d0ae8f036",
   };
 
   //functions
-
   const handleSendUserChat = async (userInput: string) => {
     setLoadingResponse(true);
     const clerkId = await auth.userId;
@@ -110,8 +109,15 @@ export default function DocChatPage() {
     getData();
   }, []);
 
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
+    }
+  }, [chatResponses]);
+
   return (
-    <section className="w-full min-h-screen lg:px-10 py-5 overscroll-none justify-between lg:flex">
+    <section className="w-full min-h-screen lg:px-10 py-5 overscroll-none justify-between lg:flex bg-primary2">
       {/* pdf file preview */}
       <div className="w-full lg:w-1/2 p-5">
         <PDFViewer fileUrl={pdfUrl} />
@@ -121,17 +127,17 @@ export default function DocChatPage() {
         style={{ maxHeight: "80dvh" }}
         className="lg:w-1/2 px-5 flex flex-col"
       >
-        <div className="w-full overflow-auto ">
+        <div className="w-full overflow-auto " ref={chatContainerRef}>
           <Typography
             variant="h5"
-            className="py-2"
+            className="py-2 text-secondary"
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           >
             Ask Anything About The Uploaded PDF <br />
           </Typography>
-          <div className="p-10 shadow-md rounded-md border-gray-200 border-solid border mb-20">
+          <div className="p-10 shadow-md rounded-md border-secondary/20 text-secondary border-solid border mb-20">
             {loadingResponse ? (
               <>
                 <Typography
@@ -211,8 +217,8 @@ export default function DocChatPage() {
           </div>
         </div>
       </div>
-      {/* input filed/form */}
-      <div className="z-50 w-screen lg:w-full fixed bottom-0 flex justify-center items-center bg-primary bg-white">
+      {/* input field/form */}
+      <div className="z-50 w-screen lg:w-full fixed bottom-0 flex justify-center items-center  bg-primary2">
         <div className="flex w-4/5 lg:w-1/2 mb-5 flex-row items-center gap-2 rounded-[99px] border border-gray-900/10 bg-gray-900/5 p-2">
           <form className="flex w-full" onSubmit={handleSubmit}>
             <Textarea

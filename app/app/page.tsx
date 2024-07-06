@@ -64,7 +64,7 @@ function AppPage() {
   };
 
   return (
-    <section className="w-full min-h-screen px-10 py-5 flex items-center justify-center">
+    <section className="w-full min-h-screen px-10 py-5 flex items-center justify-center bg-primary2">
       {analyzingDocuments && (
         <>
           <Card

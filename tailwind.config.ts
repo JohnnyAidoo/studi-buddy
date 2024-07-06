@@ -12,6 +12,7 @@ module.exports = withMT(
       extend: {
         colors: {
           primary: "rgba(var(--primary))",
+          primary2: "rgba(var(--primary2))",
           secondary: "rgba(var(--secondary))",
           tertiary: "rgba(var(--tertiary))",
         },

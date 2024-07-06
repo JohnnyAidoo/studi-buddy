@@ -4,11 +4,13 @@
 
 .light {
   --primary: 255, 255, 255;
+  --primary2: 255, 255, 255;
   --secondary: 0, 0, 0;
   --tertiary: 246, 132, 76;
 }
 .dark {
-  --primary: 18, 18, 18;
+  --primary: 23, 23, 23;
+  --primary2: 33, 33, 33;
   --secondary: 255, 255, 255;
   --tertiary: 246, 132, 76;
 }
