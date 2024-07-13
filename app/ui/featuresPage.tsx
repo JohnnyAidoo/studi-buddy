@@ -26,7 +26,7 @@ function Features() {
         onPointerLeaveCapture={undefined}
       >
         Enhance Your Document
-        <span className="text-orange-800">Interactions</span>
+        <span className="text-orange-800"> Interactions</span>
       </Typography>
       <Typography
         variant="paragraph"
@@ -41,7 +41,7 @@ function Features() {
         upload, ask and uncover insights directly from your document
       </Typography>
 
-      <div className="md:flex justify-center gap-10 w-full py-10">
+      <div className="md:grid md:grid-cols-2 lg:grid-cols-3 justify-center gap-10 w-full py-10">
         <FeatureComp
           image={<Lottie animationData={summarizeAnimation} loop />}
           title="Summarize Documents"

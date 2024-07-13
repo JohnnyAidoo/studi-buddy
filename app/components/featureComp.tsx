@@ -13,7 +13,7 @@ function FeatureComp(props: {
 }) {
   return (
     <Card
-      className="md:w-1/3 mb-10"
+      className="md:w-full mb-10"
       placeholder={undefined}
       onPointerEnterCapture={undefined}
       onPointerLeaveCapture={undefined}

@@ -6,19 +6,19 @@ function Hero() {
   return (
     <section
       id="hero"
-      className=" flex flex-col justify-between h-screen relative py-10 bg-primary px-10 dark"
+      className=" flex flex-col justify-between h-fit relative py-10 bg-primary px-10 dark"
     >
-      <div className="self-center h-full gap-10 flex flex-col items-start relative z-10 py-5">
+      <div className="self-center h-full flex gap-10 flex-col items-start relative z-10 py-5">
         <Typography
           variant="h1"
-          className="font-bold text-6xl text-secondary/90 md:px-64 text-center"
+          className="font-bold text-6xl text-secondary/90 md:px text-center w-full"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
           More Than Just Reading, Chat with Your PDFs
         </Typography>
-        <div className="relative w-full h-full rounded-lg ">
+        <div style={{ height: "50vh" }} className="relative w-full  rounded-lg">
           <Image
             className="rounded-lg "
             src={

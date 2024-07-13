@@ -36,7 +36,7 @@ export function FAQ() {
   return (
     <section
       id="faqs"
-      className="w-full px-10 md:px-52  min-h-screen flex flex-col justify-center text-secondary gap-5 bg-primary"
+      className="w-full px-10 md:px-32  min-h-screen flex flex-col justify-center text-secondary gap-5 bg-primary"
     >
       <Typography
         variant="h1"
