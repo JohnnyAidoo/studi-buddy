@@ -1,54 +1,56 @@
-import { Card, Typography } from "@material-tailwind/react";
-import Image from "next/image";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  Typography,
+} from "@material-tailwind/react";
+import Lottie from "lottie-react";
 
 function FeatureComp(props: {
-  reversed?: boolean;
   title?: string;
   description?: string;
+  image?: any;
 }) {
   return (
-    <div
-      className={` md:flex md:gap-20 items-center py-10  ${
-        props.reversed == true ? "flex-row-reverse" : "flex-row"
-      }`}
+    <Card
+      className="md:w-1/3 mb-10"
+      placeholder={undefined}
+      onPointerEnterCapture={undefined}
+      onPointerLeaveCapture={undefined}
     >
-      <Card
-        className="w-full md:w-1/2 min-h-96 bg-transparent"
+      <CardHeader
         shadow={false}
+        className="w-1/2 "
         placeholder={undefined}
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
       >
-        <Image
-          layout="fill"
-          objectFit="contain"
-          src={
-            "https://img.freepik.com/free-photo/representation-user-experience-interface-design-computer_23-2150165983.jpg?t=st=1716154463~exp=1716158063~hmac=5e64f496c0ee772ed065bca3ec866b099c4478f5a769feabad5ce5a40de303fc&w=1800"
-          }
-          alt={"feature 1"}
-        />
-      </Card>
-      <div className="w-full md:w-1/3 text-center">
+        {props.image}
+      </CardHeader>
+      <CardBody
+        className="px-10"
+        placeholder={undefined}
+        onPointerEnterCapture={undefined}
+        onPointerLeaveCapture={undefined}
+      >
         <Typography
-          variant="h1"
-          className=" text-4xl font-extrabold text-secondary/90 py-5"
+          variant="h6"
+          className="font-bold text-3xl mb-10"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          {props.title || "TITLE"}
+          {props.title}
         </Typography>
         <Typography
-          className="text-secondary/90 w-full"
-          variant="paragraph"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          {props.description || "DESCRIPTION"}
+          {props.description}
         </Typography>
-      </div>
-    </div>
+      </CardBody>
+    </Card>
   );
 }
 
