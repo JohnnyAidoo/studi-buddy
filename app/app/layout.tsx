@@ -8,6 +8,7 @@ import {
   ListItemSuffix,
   Typography,
 } from "@material-tailwind/react";
+import Link from "next/link";
 import {
   MdGroup,
   MdHome,
@@ -51,77 +52,89 @@ export default function RootLayout({
                 onPointerLeaveCapture={undefined}
               >
                 <div>
-                  <ListItem
-                    placeholder={undefined}
-                    onPointerEnterCapture={undefined}
-                    onPointerLeaveCapture={undefined}
-                  >
-                    <ListItemPrefix
+                  <Link href="/app">
+                    <ListItem
+                      selected={window.location.pathname === "/app"}
                       placeholder={undefined}
                       onPointerEnterCapture={undefined}
                       onPointerLeaveCapture={undefined}
                     >
-                      <MdHome />
-                    </ListItemPrefix>
-                    Home
-                  </ListItem>
-                  <ListItem
-                    placeholder={undefined}
-                    onPointerEnterCapture={undefined}
-                    onPointerLeaveCapture={undefined}
-                  >
-                    <ListItemPrefix
+                      <ListItemPrefix
+                        placeholder={undefined}
+                        onPointerEnterCapture={undefined}
+                        onPointerLeaveCapture={undefined}
+                      >
+                        <MdHome />
+                      </ListItemPrefix>
+                      Home
+                    </ListItem>
+                  </Link>
+                  <Link href="/group">
+                    <ListItem
+                      selected={window.location.pathname === "/group"}
                       placeholder={undefined}
                       onPointerEnterCapture={undefined}
                       onPointerLeaveCapture={undefined}
                     >
-                      <MdGroup />
-                    </ListItemPrefix>
-                    Groups
-                  </ListItem>
-                  <ListItem
-                    placeholder={undefined}
-                    onPointerEnterCapture={undefined}
-                    onPointerLeaveCapture={undefined}
-                  >
-                    <ListItemPrefix
+                      <ListItemPrefix
+                        placeholder={undefined}
+                        onPointerEnterCapture={undefined}
+                        onPointerLeaveCapture={undefined}
+                      >
+                        <MdGroup />
+                      </ListItemPrefix>
+                      Groups
+                    </ListItem>
+                  </Link>
+                  <Link href="/notifications">
+                    <ListItem
+                      selected={window.location.pathname === "/notifications"}
                       placeholder={undefined}
                       onPointerEnterCapture={undefined}
                       onPointerLeaveCapture={undefined}
                     >
-                      <MdNotifications />
-                    </ListItemPrefix>
-                    Notifications
-                    <ListItemSuffix
-                      placeholder={undefined}
-                      onPointerEnterCapture={undefined}
-                      onPointerLeaveCapture={undefined}
-                    >
-                      <Chip
-                        value="14"
-                        size="sm"
-                        variant="ghost"
-                        color="blue-gray"
-                        className="rounded-full"
-                      />
-                    </ListItemSuffix>
-                  </ListItem>
+                      <ListItemPrefix
+                        placeholder={undefined}
+                        onPointerEnterCapture={undefined}
+                        onPointerLeaveCapture={undefined}
+                      >
+                        <MdNotifications />
+                      </ListItemPrefix>
+                      Notifications
+                      <ListItemSuffix
+                        placeholder={undefined}
+                        onPointerEnterCapture={undefined}
+                        onPointerLeaveCapture={undefined}
+                      >
+                        <Chip
+                          value="14"
+                          size="sm"
+                          variant="ghost"
+                          color="blue-gray"
+                          className="rounded-full"
+                        />
+                      </ListItemSuffix>
+                    </ListItem>
+                  </Link>
                 </div>
                 <div className="">
-                  <ListItem
-                    placeholder={undefined}
-                    onPointerEnterCapture={undefined}
-                    onPointerLeaveCapture={undefined}
-                  >
-                    <ListItemPrefix
+                  <Link href="/settings">
+                    <ListItem
+                      selected={window.location.pathname === "/settings"}
                       placeholder={undefined}
                       onPointerEnterCapture={undefined}
                       onPointerLeaveCapture={undefined}
                     >
-                      <MdSettings />
-                    </ListItemPrefix>
-                    Settings
-                  </ListItem>
+                      <ListItemPrefix
+                        placeholder={undefined}
+                        onPointerEnterCapture={undefined}
+                        onPointerLeaveCapture={undefined}
+                      >
+                        <MdSettings />
+                      </ListItemPrefix>
+                      Settings
+                    </ListItem>
+                  </Link>
 
                   <ListItem
                     placeholder={undefined}
