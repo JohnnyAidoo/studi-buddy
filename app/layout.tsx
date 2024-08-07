@@ -13,16 +13,16 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Docu-Chat",
+  title: "Studi Buddy",
   description:
-    "Chat with your documents effortlessly. Enhance productivity and streamline your workflow with Docu-Chat.",
+    "ind study partners, join groups, share notes, and get personalized AI tutoring.",
   icons: {
     icon: "/assets/images/logo.svg",
   },
   openGraph: {
-    title: "Docu-Chat",
+    title: "Studi Buddy",
     description:
-      "Chat with your documents effortlessly. Enhance productivity and streamline your workflow with Docu-Chat.",
+      "ind study partners, join groups, share notes, and get personalized AI tutoring.",
     images: [
       {
         url: "https://utfs.io/f/80eb5da4-8fdb-4b4f-9557-c3f366f7d769-n3ch5g.png", // Must be an absolute URL
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: "https://utfs.io/f/80eb5da4-8fdb-4b4f-9557-c3f366f7d769-n3ch5g.png", // Must be an absolute URL
         width: 1800,
         height: 1600,
-        alt: "Docu-Chat Banner Image",
+        alt: "Studi Buddy Banner Image",
       },
     ],
   },
@@ -47,7 +47,7 @@ export default function RootLayout({
   return (
     <>
       <ClerkProvider>
-        <html lang="en" className="bg-primary ">
+        <html lang="en" className="bg-primary light ">
           <body
             className={`${poppins.variable} bg-primary  `}
             style={{ overflowX: "hidden" }}

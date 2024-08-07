@@ -21,9 +21,9 @@ export function Header() {
   );
 
   return (
-    <div className="dark max-h-[768px] w-[calc(100%+20px)] bg-primary ">
+    <div className="light max-h-[768px] w-[calc(100%+20px)] bg-primary sticky top-0 z-50 shadow-none">
       <Navbar
-        className="sticky top-0 z-10 h-max max-w-full rounded-none py-2 lg:px-8 lg:py-4 bg-primary border-primary"
+        className=" h-max max-w-full rounded-none py-2 lg:px-8 lg:py-4 bg-primary shadow-none"
         placeholder={undefined}
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
@@ -41,7 +41,7 @@ export function Header() {
               onPointerLeaveCapture={undefined}
               className="text-secondary text-lg"
             >
-              Docu-Chat
+              Studi Buddy
             </Typography>
           </Link>
           <div className="flex items-center gap-4">
@@ -60,7 +60,7 @@ export function Header() {
               </a>
               <a href="/sign-up">
                 <Button
-                  className="from-orange-700 to-yellow-900"
+                  className="from-tertiary to-tertiary2 hover:from-tertiary2 hover:to-tertiary"
                   variant="gradient"
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}

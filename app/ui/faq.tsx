@@ -61,13 +61,11 @@ export function FAQ() {
           onPointerLeaveCapture={undefined}
           className="text-secondary"
         >
-          How does DocuChat summarize documents?
+          How do I sign up?
         </AccordionHeader>
         <AccordionBody className="text-secondary">
-          DocuChat uses advanced AI algorithms to analyze the content of your
-          documents and generate concise summaries. Simply upload your PDF or
-          photo, and our app will provide you with a brief yet comprehensive
-          overview of the key points, saving you time and effort.
+          Click the ‘Get Started for Free’ button and follow the prompts to
+          create your account.
         </AccordionBody>
       </Accordion>
       <Accordion
@@ -84,17 +82,14 @@ export function FAQ() {
           onPointerLeaveCapture={undefined}
           className="text-secondary"
         >
-          Can I ask specific questions about my documents in DocuChat?
+          What features are included in the Free plan?
         </AccordionHeader>
         <AccordionBody className="text-secondary">
-          Yes! With DocuChat, you can interact with your documents just like you
-          would in a conversation. Type your questions into the chat interface,
-          and our intelligent system will provide detailed responses based on
-          the content of your document, making it easier to find the information
-          you need.
+          The Free plan includes access to basic features such as limited file
+          storage, group creation, and chat functionality.
         </AccordionBody>
       </Accordion>
-      <Accordion
+      {/* <Accordion
         open={open === 3}
         icon={<Icon id={3} open={open} />}
         placeholder={undefined}
@@ -116,7 +111,7 @@ export function FAQ() {
           research paper, a contract, or any other document, DocuChat is
           equipped to help you interact with and understand your content.
         </AccordionBody>
-      </Accordion>
+      </Accordion> */}
     </section>
   );
 }

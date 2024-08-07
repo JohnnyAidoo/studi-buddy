@@ -61,7 +61,7 @@ export function PricingCard(props: {
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          standard
+          Upgrade To Premium
         </Typography>
         <Typography
           variant="h1"
@@ -73,8 +73,20 @@ export function PricingCard(props: {
         >
           <span className="mt-2 text-4xl">$</span>
           {props.planPrice}
-          <span className="self-end text-4xl">{props.planDuration}</span>
+          <span className="self-end text-4xl ">{props.planDuration}</span>
         </Typography>
+        <div className="py-10">
+          <b className="text-primary ">FREE PLAN</b>
+          <Typography
+            className="font-normal"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            Basic features, limited file storage, group creation, and chat
+            functionality
+          </Typography>
+        </div>
       </CardHeader>
       <CardBody
         className="p-0"
@@ -93,7 +105,7 @@ export function PricingCard(props: {
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              5 team members
+              AI tutoring
             </Typography>
           </li>
           <li className="flex items-center gap-4">
@@ -106,7 +118,7 @@ export function PricingCard(props: {
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              200+ components
+              Enhanced analytics
             </Typography>
           </li>
           <li className="flex items-center gap-4">
@@ -119,7 +131,7 @@ export function PricingCard(props: {
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              40+ built-in pages
+              Unlimited file storage
             </Typography>
           </li>
           <li className="flex items-center gap-4">
@@ -132,20 +144,7 @@ export function PricingCard(props: {
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              1 year free updates
-            </Typography>
-          </li>
-          <li className="flex items-center gap-4">
-            <span className="rounded-full border border-white/20 bg-white/20 p-1">
-              <CheckIcon />
-            </span>
-            <Typography
-              className="font-normal"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              Life time technical support
+              Priority support
             </Typography>
           </li>
         </ul>
@@ -170,7 +169,7 @@ export function PricingCard(props: {
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           >
-            Buy Now
+            Upgrade to Premium
           </Button>
         </a>
       </CardFooter>

@@ -17,13 +17,6 @@ function Pricing() {
       price: 19,
       duration: "/month",
     },
-    {
-      link: process.env.NODE_ENV === "development" ? "********" : "",
-      priceId: process.env.NODE_ENV === "development" ? "********" : "",
-
-      price: 99,
-      duration: "/year",
-    },
   ];
 
   return (

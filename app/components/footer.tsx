@@ -23,28 +23,6 @@ const currentYear = new Date().getFullYear();
 export function Footer() {
   return (
     <footer className=" overflow-hidden relative w-full bg-primary ">
-      <div className="flex flex-col justify-center items-center gap-10 py-20">
-        <Typography
-          variant="h1"
-          className="text-center text-3xl md:text-6xl font-extrabold text-secondary/90"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
-          Sign up today.
-        </Typography>
-        <a href="/sign-up">
-          <Button
-            className="from-deep-orange-700 to-yellow-900"
-            variant="gradient"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
-            Sign Up
-          </Button>
-        </a>
-      </div>
       <div className="bg-black/90 py-10 flex items-center px-10 justify-between">
         <Typography
           variant="paragraph"
@@ -53,7 +31,7 @@ export function Footer() {
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          Docu-Chat {currentYear}
+          Studi Buddy {currentYear}
         </Typography>
         <div className="flex gap-5">
           {links.map((link) => (

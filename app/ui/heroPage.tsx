@@ -1,62 +1,77 @@
 "use client";
 import { Button, Typography } from "@material-tailwind/react";
 import Image from "next/image";
+import heroImg from "../../public/heroImg.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+import graph from "../../public/graph.png";
 
 function Hero() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <section
       id="hero"
-      className=" flex flex-col justify-between h-fit relative py-10 bg-primary px-10 dark"
+      style={{ height: "100vh" }}
+      className="light flex justify-around px-20 "
     >
-      <div className="self-center h-full flex gap-10 flex-col items-start relative z-10 py-5">
+      <div
+        data-aos="zoom-in-right"
+        data-aos-duration="800"
+        id="text"
+        className=" flex flex-col gap-5 justify-center"
+      >
         <Typography
           variant="h1"
-          className="font-bold text-6xl text-secondary/90 md:px text-center w-full"
+          className="text-6xl font-extrabold text-secondary"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          More Than Just Reading, Chat with Your PDFs
+          Connect, Collaborate, Succeed with <br />
+          <span className="text-tertiary">Studi Buddy</span>
         </Typography>
-        <div style={{ height: "50vh" }} className="relative w-full  rounded-lg">
-          <Image
-            className="rounded-lg "
-            src={
-              "https://utfs.io/f/0fbd5b50-8989-4df3-92d6-05f6cd818469-wi70pb.png"
-            }
-            alt={"hero image"}
-            layout="fill"
-            objectFit="contain"
-          />
+        <Typography
+          variant="paragraph"
+          className="  text-secondary"
+          placeholder={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
+          Learn Anywhere, Anytime and Learn in groups
+        </Typography>
+        <div className="flex gap-5">
+          <a href="/sign-up">
+            <Button
+              className="from-tertiary to-tertiary2 hover:from-tertiary2 hover:to-tertiary"
+              variant="gradient"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
+              Get Started
+            </Button>
+          </a>
+          <a href="#features">
+            <Button
+              variant="outlined"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
+              Learn More
+            </Button>
+          </a>
         </div>
       </div>
-      <Typography
-        className="text-secondary/90 pb-5 px-5 md:px-10 "
-        variant="paragraph"
-        placeholder={undefined}
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
+      <div
+        className=" w-1/2 flex justify-center items-center"
+        data-aos="zoom-in-left"
+        data-aos-duration="800"
       >
-        Welcome to DocuChat – the revolutionary app that transforms the way you
-        interact with your documents. Whether it&apos;s a PDF file or a photo,
-        DocuChat allows you to engage with your content in a whole new way.
-        Imagine having a conversation with your documents, extracting the
-        information you need effortlessly, and navigating through complex files
-        with ease.
-      </Typography>
-      <div className="flex w-full justify-center">
-        <a href="/sign-in">
-          <Button
-            size="lg"
-            variant="gradient"
-            className=" from-deep-orange-700 to-yellow-900"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
-            Get Started
-          </Button>
-        </a>
+        <Image src={heroImg} alt="hero-image" objectFit="cover" />
       </div>
     </section>
   );
