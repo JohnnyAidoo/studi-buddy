@@ -8,13 +8,25 @@ import logoImg from "@/public/icon.png";
 export function Header() {
   const navList = (
     <ul className="mt-2 mb-4  flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Link href="#features" className="hover:underline text-secondary">
+      <Link href="/" className="hover:underline text-secondary hover:scale-105">
+        Home
+      </Link>
+      <Link
+        href="#features"
+        className="hover:underline text-secondary hover:scale-105"
+      >
         Features
       </Link>
-      <Link href="#pricing" className="hover:underline text-secondary">
+      <Link
+        href="#pricing"
+        className="hover:underline text-secondary hover:scale-105 "
+      >
         Pricing
       </Link>
-      <Link href="#faqs" className="hover:underline text-secondary">
+      <Link
+        href="#faqs"
+        className="hover:underline text-secondary hover:scale-105"
+      >
         FAQs
       </Link>
     </ul>
@@ -47,17 +59,6 @@ export function Header() {
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
             <div className="flex items-center gap-x-1">
-              <a href="/sign-in">
-                <Button
-                  variant="text"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                  className="text-secondary bg-secondary/10 hover:shadow-md"
-                >
-                  Sign In
-                </Button>
-              </a>
               <a href="/sign-up">
                 <Button
                   className="from-tertiary to-tertiary2 hover:from-tertiary2 hover:to-tertiary"
