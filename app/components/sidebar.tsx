@@ -69,7 +69,7 @@ export default function Sidebar() {
         onPointerLeaveCapture={undefined}
       >
         <List
-          className="w-full"
+          className="w-full bg-primary"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}

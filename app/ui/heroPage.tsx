@@ -1,16 +1,12 @@
 "use client";
 import { Button, Typography } from "@material-tailwind/react";
 import Image from "next/image";
-import heroImg from "../../public/heroImg.png";
+import heroImg from "../images/heroImg.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import graph from "../../public/graph.png";
 
 function Hero() {
-  useEffect(() => {
-    AOS.init();
-  }, []);
   return (
     <section
       id="hero"

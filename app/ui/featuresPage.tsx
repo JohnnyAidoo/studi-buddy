@@ -1,10 +1,10 @@
 "use client";
-import { Card, CardBody, Typography } from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react";
 import FeatureComp from "../components/featureComp";
-import handshakeImg from "../../public/handshake.png";
-import notesImg from "../../public/notes.png";
-import groupImg from "../../public/group.png";
-import gamificationImg from "../../public/game.png";
+import handshakeImg from "../images/handshake.png";
+import notesImg from "../images/notes.png";
+import groupImg from "../images/group.png";
+import gamificationImg from "../images/game.png";
 
 function Features() {
   return (
