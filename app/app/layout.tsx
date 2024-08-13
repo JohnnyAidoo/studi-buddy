@@ -2,18 +2,15 @@
 import {
   Button,
   Card,
-  Chip,
   List,
   ListItem,
   ListItemPrefix,
-  ListItemSuffix,
-  CardHeader,
   Input,
   Typography,
   Navbar,
+  Avatar,
 } from "@material-tailwind/react";
-
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 
 import Link from "next/link";
 import { MdHome, MdLogout } from "react-icons/md";
@@ -23,6 +20,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const { isLoaded, isSignedIn, user } = useUser();
+  if (!isLoaded || !isSignedIn) {
+    return null;
+  }
   const sideBarTopItems = [
     {
       icon: <MdHome />,
@@ -177,7 +178,7 @@ export default function RootLayout({
 
           <main style={{ width: "100vw" }}>
             <Navbar
-              className="shadow-none flex justify-between bg-white w-full "
+              className="shadow-none flex justify-between bg-white top-0 w-full -z-10 "
               placeholder={undefined}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
@@ -202,10 +203,15 @@ export default function RootLayout({
                   crossOrigin={undefined}
                 />
               </div>
-              <SignedIn>
-                {/* Mount the UserButton component */}
-                <UserButton />
-              </SignedIn>
+              <Link href="/app/profile">
+                <Avatar
+                  size="sm"
+                  src={user.imageUrl as string}
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                />
+              </Link>
             </Navbar>
             <section className="px-10">{children}</section>
           </main>

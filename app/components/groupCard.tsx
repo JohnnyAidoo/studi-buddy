@@ -27,11 +27,7 @@ export function GroupCardComponent(props: {
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
       >
-        <img
-          src={props.image}
-          alt="card-image"
-          style={{ aspectRatio: 1, height: "100%" }}
-        />
+        <img src={props.image} alt="card-image" />
       </CardHeader>
       <CardBody
         placeholder={undefined}
