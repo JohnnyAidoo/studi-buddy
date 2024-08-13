@@ -26,21 +26,25 @@ function Features() {
           title="Find Study Partners"
           description="Connect with professionals who share your interests and passions."
           image={handshakeImg}
+          colorGradient="from-blue-100 to-blue-50"
         />
         <FeatureComp
           title="Join or Create Groups"
           description="Join online study groups, meet like-minded individuals, and build stronger connections."
           image={groupImg}
+          colorGradient="from-red-100 to-red-50"
         />
         <FeatureComp
           title="Share Notes and Resources"
           description="Easily share and access study materials."
           image={notesImg}
+          colorGradient="from-green-100 to-green-50"
         />
         <FeatureComp
           title="Gamification"
           description="Easily share and access study materials."
           image={gamificationImg}
+          colorGradient="from-purple-100 to-purple-50"
         />
       </div>
     </section>

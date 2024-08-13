@@ -6,6 +6,7 @@ const nextConfig = {
       "docs.material-tailwind.com",
       "img.clerk.com",
       "utfs.io",
+      "via.placeholder.com",
     ],
   },
 };

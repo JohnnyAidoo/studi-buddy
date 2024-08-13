@@ -12,16 +12,11 @@ import {
   Typography,
   Navbar,
 } from "@material-tailwind/react";
+
 import { SignedIn, UserButton } from "@clerk/nextjs";
 
 import Link from "next/link";
-import {
-  MdGroup,
-  MdHome,
-  MdLogout,
-  MdNotifications,
-  MdSettings,
-} from "react-icons/md";
+import { MdHome, MdLogout } from "react-icons/md";
 
 export default function RootLayout({
   children,
@@ -81,7 +76,7 @@ export default function RootLayout({
                     window.location.pathname === path;
 
                   return (
-                    <Link href={item.href}>
+                    <Link href={item.href} key={item.href}>
                       <ListItem
                         className={`${
                           isSelected(item.href)
@@ -182,7 +177,7 @@ export default function RootLayout({
 
           <main style={{ width: "100vw" }}>
             <Navbar
-              className="shadow-none flex justify-between bg-white "
+              className="shadow-none flex justify-between bg-white w-full "
               placeholder={undefined}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
@@ -198,7 +193,7 @@ export default function RootLayout({
                   Home
                 </Typography>
               </div>
-              <div className="w-1/12">
+              <div className="w-3/12">
                 <Input
                   variant="outlined"
                   label="Search..."

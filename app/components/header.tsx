@@ -33,9 +33,9 @@ export function Header() {
   );
 
   return (
-    <div className="light max-h-[768px] w-[calc(100%+20px)] bg-primary sticky top-0 z-50 shadow-none">
+    <div className="light max-h-[768px] w-[calc(100%+20px)] bg-transparent fixed top-0 z-50 shadow-none ">
       <Navbar
-        className=" h-max max-w-full rounded-none py-2 lg:px-8 lg:py-4 bg-primary shadow-none"
+        className=" h-max max-w-full rounded-none py-2 lg:px-8 lg:py-4  bg-transparent  shadow-none"
         placeholder={undefined}
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}

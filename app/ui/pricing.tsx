@@ -8,13 +8,13 @@ function Pricing() {
     {
       link:
         process.env.NODE_ENV === "development"
-          ? "https://buy.stripe.com/test_28o2argVX8NNeqs144"
+          ? "https://buy.stripe.com/cN2g1Wf2YgRq8ZaeUU"
           : "",
       priceId:
         process.env.NODE_ENV === "development"
           ? "price_1PRReuLoyfPvUnOQ7cDj1YaH"
           : "",
-      price: 19,
+      price: 4.99,
       duration: "/month",
     },
   ];

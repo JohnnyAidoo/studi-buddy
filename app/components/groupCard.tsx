@@ -1,39 +1,54 @@
-import { Card, CardBody, Typography } from "@material-tailwind/react";
+"use client";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
+} from "@material-tailwind/react";
 
-import Image from "next/image";
-function FeatureComp(props: {
-  title?: string;
+export function GroupCardComponent(props: {
+  name: string;
   description?: string;
-  image?: any;
-  colorGradient?: any;
+  image?: string;
 }) {
   return (
     <Card
-      className={`w-1/2 flex items-center py-5 bg-gradient-to-tr hover:scale-105 ${props.colorGradient}`}
+      className="mt-6 "
       placeholder={undefined}
       onPointerEnterCapture={undefined}
       onPointerLeaveCapture={undefined}
     >
-      <div className="w-1/2 py-10">
-        <Image src={props.image} alt="find study partners" objectFit="cover" />
-      </div>
+      <CardHeader
+        color="blue-gray"
+        className="relative h-56 flex items-center justify-center"
+        placeholder={undefined}
+        onPointerEnterCapture={undefined}
+        onPointerLeaveCapture={undefined}
+      >
+        <img
+          src={props.image}
+          alt="card-image"
+          style={{ aspectRatio: 1, height: "100%" }}
+        />
+      </CardHeader>
       <CardBody
         placeholder={undefined}
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
       >
         <Typography
-          className="text-secondary"
           variant="h5"
+          color="blue-gray"
+          className="mb-2"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          {props.title}
+          {props.name}
         </Typography>
         <Typography
-          className="text-secondary"
-          variant="paragraph"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
@@ -44,5 +59,3 @@ function FeatureComp(props: {
     </Card>
   );
 }
-
-export default FeatureComp;

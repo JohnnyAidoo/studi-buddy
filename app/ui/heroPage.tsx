@@ -7,28 +7,37 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 
 function Hero() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <section
       id="hero"
-      style={{ height: "100vh" }}
-      className="light flex justify-around px-20 "
+      style={{
+        height: "100vh",
+        backgroundImage:
+          "url('https://utfs.io/f/978f8e74-0402-4ecd-bf14-99f787a7bb37-u9ibe8.jpg')", // Using the provided image URL
+        backgroundSize: "cover", // Ensures the background image covers the entire section
+        backgroundPosition: "right",
+        backgroundRepeat: "no-repeat",
+      }}
     >
       <div
-        data-aos="zoom-in-right"
-        data-aos-duration="800"
         id="text"
-        className=" flex flex-col gap-5 justify-center"
+        className=" flex flex-col gap-5 items-center justify-center w-full h-full"
       >
-        <Typography
-          variant="h1"
-          className="text-6xl font-extrabold text-secondary"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
-          Connect, Collaborate, Succeed with <br />
-          <span className="text-tertiary">Studi Buddy</span>
-        </Typography>
+        <div data-aos="zoom-in" data-aos-duration="800">
+          <Typography
+            variant="h1"
+            className="text-6xl font-extrabold text-secondary text-center"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            Connect, Collaborate, Succeed with <br />
+            <span className="text-tertiary  px-10">Studi Buddy</span>
+          </Typography>
+        </div>
         <Typography
           variant="paragraph"
           className="  text-secondary"
@@ -61,13 +70,6 @@ function Hero() {
             </Button>
           </a>
         </div>
-      </div>
-      <div
-        className=" w-1/2 flex justify-center items-center"
-        data-aos="zoom-in-left"
-        data-aos-duration="800"
-      >
-        <Image src={heroImg} alt="hero-image" objectFit="cover" />
       </div>
     </section>
   );

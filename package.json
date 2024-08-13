@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/nextjs": "^5.0.12",
+    "@clerk/nextjs": "^5.3.0",
     "@heroicons/react": "^2.1.4",
     "@material-tailwind/react": "^2.1.9",
     "@react-pdf-viewer/core": "^3.12.0",
