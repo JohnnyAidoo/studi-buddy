@@ -27,6 +27,7 @@ function Dashboard() {
       <div className="grid grid-cols-3 gap-5">
         {groups.map((group) => (
           <GroupCardComponent
+            key={group._id}
             name={group.name}
             description={group.description}
             image={group.imageUrl}
