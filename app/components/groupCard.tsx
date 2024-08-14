@@ -3,9 +3,7 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   Typography,
-  Button,
 } from "@material-tailwind/react";
 
 export function GroupCardComponent(props: {
@@ -21,8 +19,7 @@ export function GroupCardComponent(props: {
       onPointerLeaveCapture={undefined}
     >
       <CardHeader
-        color="blue-gray"
-        className="relative h-56 flex items-center justify-center"
+        className="relative h-fit flex items-center justify-center"
         placeholder={undefined}
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
