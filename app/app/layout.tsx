@@ -24,6 +24,7 @@ export default function RootLayout({
   if (!isLoaded || !isSignedIn) {
     return null;
   }
+
   const sideBarTopItems = [
     {
       icon: <MdHome />,
@@ -191,7 +192,7 @@ export default function RootLayout({
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  Home
+                  ''
                 </Typography>
               </div>
               <div className="w-3/12">

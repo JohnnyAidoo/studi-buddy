@@ -1,0 +1,19 @@
+APP_NAME='Studi Buddy' 
+# CLERK
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_bGl2ZS1kb3ZlLTYwLmNsZXJrLmFjY291bnRzLmRldiQ
+CLERK_SECRET_KEY=sk_test_D5N1TyhQ7aT5qGeoJKx2z6fT8j1OSNz2CxYxCgTUcX
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/app
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/app
+
+#UPLOOATHING
+UPLOADTHING_SECRET=
+UPLOADTHING_APP_ID=
+p9KhHOe7wmEw05b9
+
+# MONGODB
+MONGODB_URI=mongodb://johnnyoseiaidoo65:p9KhHOe7wmEw05b9@cluster0-shard-00-00.wtrxn.mongodb.net:27017,cluster0-shard-00-01.wtrxn.mongodb.net:27017,cluster0-shard-00-02.wtrxn.mongodb.net:27017/?ssl=true&replicaSet=atlas-7mfowc-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0
+
+
+# STRIPE
