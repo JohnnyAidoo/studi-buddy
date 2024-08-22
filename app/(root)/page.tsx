@@ -3,7 +3,6 @@ import { Header } from "../components/header";
 import { FAQ } from "../ui/faq";
 import Features from "../ui/featuresPage";
 import Hero from "../ui/heroPage";
-import Pricing from "../ui/pricing";
 
 function LandingPage() {
   return (
@@ -11,7 +10,7 @@ function LandingPage() {
       <Header />
       <Hero />
       <Features />
-      <Pricing />
+      {/* <Pricing /> */}
       <FAQ />
       <Footer />
     </>

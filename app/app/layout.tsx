@@ -235,7 +235,7 @@ const sidebarComponent = () => {
               AI tutoring, unlimited file storage, enhanced analytics, and
               priority support.
             </Typography>
-            <Link href={"https://buy.stripe.com/test_28o2argVX8NNeqs144"}>
+            <Link href={"https://buy.stripe.com/cN2g1Wf2YgRq8ZaeUU"}>
               <Button
                 className=" bg-primary text-tertiary shadow-sm w-full"
                 placeholder={undefined}
