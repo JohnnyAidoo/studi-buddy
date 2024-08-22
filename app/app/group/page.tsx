@@ -55,6 +55,7 @@ function GroupChatPage() {
           const IamSender: boolean = message.userId === userId;
           return (
             <Card
+              key={message._id}
               className={`w-fit px-5 py-2 mb-1 ${
                 IamSender ? "self-end bg-tertiary text-primary" : ""
               } `}
