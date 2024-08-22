@@ -25,12 +25,12 @@ export const metadata: Metadata = {
       "ind study partners, join groups, share notes, and get personalized AI tutoring.",
     images: [
       {
-        url: "https://utfs.io/f/80eb5da4-8fdb-4b4f-9557-c3f366f7d769-n3ch5g.png", // Must be an absolute URL
+        url: "https://utfs.io/f/27f31d16-c848-4431-ada6-ed33a66bdfcc-vbrhd.png", // Must be an absolute URL
         width: 800,
         height: 600,
       },
       {
-        url: "https://utfs.io/f/80eb5da4-8fdb-4b4f-9557-c3f366f7d769-n3ch5g.png", // Must be an absolute URL
+        url: "https://utfs.io/f/27f31d16-c848-4431-ada6-ed33a66bdfcc-vbrhd.png", // Must be an absolute URL
         width: 1800,
         height: 1600,
         alt: "Studi Buddy Banner Image",
